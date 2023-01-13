@@ -11,7 +11,6 @@ State Data Visualization is a data visualization of United States. For each stat
 
 &emsp;
 ## Functionality and MVPs
----
 In **SDV**, users will be able to:
 1. Click on the map to select state.
 2. Zoom in/out a map.
@@ -26,7 +25,6 @@ In **SDV**, users will be able to:
 
 &emsp;
 ## Implementation Timeline:
----
 * **Friday Afternoon & Weekend:**
  Setup project, including getting webpack up and running. Create map, state, classes and ensure that my data is being fetched properly. Get zoom in and zoom out functionality.
 
