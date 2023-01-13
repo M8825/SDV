@@ -37,4 +37,3 @@ In **SDV**, users will be able to:
 * **Wednesday:** TBD...
 
 * **Thursday:** Deploy to GitHub pages.
-# SDV
