@@ -1,35 +1,71 @@
-function map(mapdata) {
-  const width=975;
-  const height=610;
+function map(us) {
+  const width = 975;
+  const height = 610;
 
-  // Create an svg element to hold our map, and set it to the proper width and
-  // height. The viewBox is set to a constant value becase the projection we're
-  // using is designed for that viewBox size:
-  // https://github.com/topojson/us-atlas#us-atlas-topojson
-  const svg = d3.select("#map").append("svg")
-      .attr("width", width)
-      .attr("height", height)
-      .attr("viewBox", [0, 0, 975, 610])
-      .attr("style", "width: 100%; height: auto; height: intrinsic;");
+  const path = d3.geoPath()
 
-  // Create the US boundary
-  const usa = svg
-    .append('g')
-    .append('path')
-    .datum(topojson.feature(mapdata, mapdata.objects.nation))
-    .attr('d', d3.geoPath())
+  function zoomed(event) {
+    const {transform} = event;
+    g.attr("transform", transform);
+    g.attr("stroke-width", 1 / transform.k);
+  }
 
-  // Create the state boundaries. "stroke" and "fill" set the outline and fill
-  // colors, respectively.
-  const state = svg
-    .append('g')
-    .attr('stroke', '#444')
-    .attr('fill', 'black')
-    .selectAll('path')
-    .data(topojson.feature(mapdata, mapdata.objects.states).features)
-    .join('path')
-    .attr('vector-effect', 'non-scaling-stroke')
-    .attr('d', d3.geoPath());
+  const zoom = d3.zoom()
+      .scaleExtent([1, 100])
+      .on("zoom", zoomed);
+
+  const svg = d3.create("svg")
+      .attr("viewBox", [0, 0, width, height])
+      .on("click", reset);
+
+  const g = svg.append("g");
+
+  const states = g.append("g")
+      .attr("fill", "black")
+      .attr("cursor", "pointer")
+    .selectAll("path")
+    .data(topojson.feature(us, us.objects.states).features)
+    .join("path")
+      .on("click", clicked)
+      .attr("d", path);
+
+  states.append("title")
+      .text(d => d.properties.name);
+
+  g.append("path")
+      .attr("fill", "none")
+      .attr("stroke", "white")
+      .attr("stroke-linejoin", "round")
+      .attr("d", path(topojson.mesh(us, us.objects.states, (a, b) => a !== b)));
+
+  svg.call(zoom);
+
+  function reset() {
+    states.transition().style("fill", null);
+    svg.transition().duration(750).call(
+      zoom.transform,
+      d3.zoomIdentity,
+      d3.zoomTransform(svg.node()).invert([width / 2, height / 2])
+    );
+  }
+
+  function clicked(event, d) {
+    const [[x0, y0], [x1, y1]] = path.bounds(d);
+    event.stopPropagation();
+    states.transition().style("fill", null);
+    d3.select(this).transition().style("fill", "yellow");
+    svg.transition().duration(750).call(
+      zoom.transform,
+      d3.zoomIdentity
+        .translate(width / 2, height / 2)
+        .scale(Math.min(8, 0.9 / Math.max((x1 - x0) / width, (y1 - y0) / height)))
+        .translate(-(x0 + x1) / 2, -(y0 + y1) / 2),
+      d3.pointer(event, svg.node())
+    );
+  }
+
+
+  return svg.node();
 }
 
 
