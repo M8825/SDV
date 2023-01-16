@@ -1,10 +1,10 @@
 class State {
-  constructor(stateData) {
-    this.name = stateData['name'];
-    this.population = stateData['population'];
-    this.gdp = stateData['gdp'];
-    this.gdpPerCapita = stateData['gdpPerCapita'];
-    this.employment = stateData['employment'];
-    this.personalIncome = stateData['personalIncome'];
-  }
+        constructor(name, data) {
+            this.name = name;
+            this.population = data.population(name, data.allYearsPop, 0);
+            this.populationHist = data.population(name, data.allYearsPop);
+        }
 }
+
+
+export default State;

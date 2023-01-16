@@ -27,9 +27,18 @@
 
 {
     "name": "Alabama",
-    "population": 4903185,
+    "population": [4903185, 1],
     "gdp": 222,
     "gdpPerCapita": 45,
     "employment": 2.5,
     "personalIncome": 45
 }
+
+
+# TODOs
+## State object
+    [x] - 1 or 0 indicating if the state pop increased or decreased compared to last year.
+    [ ] - 1 or 0 indicating if the state gdp increased or decreased compared to last year.
+    [ ] - 1 or 0 indicating if the state gdpPerCapita increased or decreased compared to last year.
+    [ ] - 1 or 0 indicating if the state employment increased or decreased compared to last year.
+    [ ] - 1 or 0 indicating if the state personalIncome increased or decreased compared to last year.

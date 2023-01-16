@@ -73,6 +73,11 @@ class Population {
         } else {
             // Year should be an integer value from 0 to 4
             population.push(data[year][state]['POP']);
+
+            let currentYear = parseInt(data[year][state]['POP']);
+            let lastYear = parseInt(data[1][state]['POP']);
+
+            currentYear > lastYear ? population.push(1) : population.push(0)
         }
 
         return population;
