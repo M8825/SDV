@@ -3,11 +3,11 @@
 
 
 ## DATA API
-* Census - Population by state:
+-[X] Census - Population by state:
     - https://api.census.gov/data/2021/pep/population?get=POP_2021,NAME&for=state:*&key=80815206a6c8e5c391e74cfd3884b9b0d90f316d
 
 * Census - Full Employment by State:
-    - https://api.census.gov/data/timeseries/govs?get=NAME,TOT_EMP,TOT_EMP_CV&for=state:*&time=2021 key=80815206a6c8e5c391e74cfd3884b9b0d90f316d
+    - https://api.census.gov/data/timeseries/govs?get=NAME,TOT_EMP,TOT_EMP_CV&for=state:*&time=2020&key=80815206a6c8e5c391e74cfd3884b9b0d90f316d
     * State and Local Government Employment and Payroll Data:
         * US and States: 2017 - 2021;
         * State Government Employment and Payroll Data: US and States: 2017 - 2021;

@@ -13,7 +13,8 @@ class State {
 
         constructor(name, data) {
             this.name = name;
-            this.population = data.population(name, data.allYearsPop, 0);
+            this.population = data.getStats(name, data.populationHistorical, 0);
+            this.employment = data.getStats(name, data.employmentHistorical, 0);
         }
 
         static stateNames = () => {

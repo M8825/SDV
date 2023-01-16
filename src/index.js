@@ -1,11 +1,11 @@
 import map from './scripts/map';
-import Population from './scripts/population';
+import Census from './scripts/census';
 import Stats from './scripts/stats';
 import State from './scripts/state';
 
 document.addEventListener('DOMContentLoaded', async () => {
   const mapDiv = document.getElementById('map');
-  let statsEl = document.getElementById('stats');
+  const statsEl = document.getElementById('stats');
   mapDiv.style.width = '100%';
 
 
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const mapJson = await res.json()
 
 
-  // MAP above
+  // // MAP above
   const data = await setupData()
   const states = State.setupStates(data);
   const stats = new Stats(statsEl, states);
@@ -24,13 +24,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 const setupData = async () => {
-  const population = new Population();
-  const allYearsPop = await Population.fetchPopulation(population);
+  const census = new Census();
+  const populationHistorical = await Census.fetchData(census.populationLinks);
+  const employmentHistorical = await Census.fetchData(census.employmentLinks);
 
   const data = {
     'name': '',
-    'allYearsPop': allYearsPop,
-    'population': population.getStatePopulation
+    'populationHistorical': populationHistorical,
+    'employmentHistorical': employmentHistorical,
+    'getStats': census.getStateStats,
   }
 
   return data;
