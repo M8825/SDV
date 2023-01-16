@@ -1,19 +1,21 @@
 
 class Stats {
-    constructor(divEl, state) {
+    constructor(divEl, states) {
         this.divEl = divEl;
-        this.state = state;
-        divEl.appendChild(this.setUpStats(state));
+        this.state = states['Alabama'];
+        divEl.appendChild(this.setUpStats(this.state));
     }
 
     setUpStats(state) {
         let ul = document.createElement('ul');
 
         for (let key in state) {
-            let li = document.createElement('li');
-            let keyUppercase = key[0].toUpperCase() + key.slice(1)
-            li.innerHTML = `${keyUppercase}: ${state[key]}`;
-            ul.appendChild(li);
+            let liEl = document.createElement('li');
+            let upperCaseName = key[0].toUpperCase() + key.slice(1);
+            let stateAttributeValue = state[key];
+
+            liEl.innerHTML = `${upperCaseName}: ${stateAttributeValue}`;
+            ul.appendChild(liEl);
         }
 
         return ul;

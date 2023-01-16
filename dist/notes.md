@@ -42,3 +42,10 @@
     [ ] - 1 or 0 indicating if the state gdpPerCapita increased or decreased compared to last year.
     [ ] - 1 or 0 indicating if the state employment increased or decreased compared to last year.
     [ ] - 1 or 0 indicating if the state personalIncome increased or decreased compared to last year.
+
+## Stats
+- [ ] Initialize with USA stats
+    * I don't have a stats for USA and I'm considering to hard code it.
+
+## Performance
+- [ ] Instead of fetching map, load it from a local file
