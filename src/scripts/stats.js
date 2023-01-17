@@ -10,20 +10,23 @@ class Stats {
         let ul = document.createElement('ul');
 
         for (let key in state) {
+            let lastFourDigits = key.slice(key.length - 4);
+            if ( lastFourDigits === 'Hist') continue;
             let liEl = document.createElement('li');
             let divName = document.createElement('div');
             let divValue = document.createElement('div');
-            let upperCaseName = key[0].toUpperCase() + key.slice(1);
-            let stateAttributeValue = state[key];
+            let titlezeName = key[0].toUpperCase() + key.slice(1);
+            let statsValue = state[key];
 
-            divName.innerHTML = upperCaseName;
-            divValue.innerHTML = stateAttributeValue;
+            divName.innerHTML = titlezeName;
+            divValue.innerHTML = statsValue;
 
             liEl.appendChild(divName)
             liEl.appendChild(divValue)
             liEl.setAttribute('class', 'stats-item')
 
             ul.appendChild(liEl);
+            ul.setAttribute('id', 'stats-ul')
         }
 
         return ul;

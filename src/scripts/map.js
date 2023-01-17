@@ -1,6 +1,6 @@
 function map(us, stats, stateObject) {
-  const width = 800;
-  const height = 600;
+  const width = 1200;
+  const height = 800;
 
   const path = d3.geoPath()
 
@@ -21,7 +21,8 @@ function map(us, stats, stateObject) {
   const g = svg.append("g");
 
   const states = g.append("g")
-      .attr("fill", "#404040")
+    .style("fill", "#29DEF2")
+      .attr("fill", "#172573")
       .attr("cursor", "pointer")
     .selectAll("path")
     .data(topojson.feature(us, us.objects.states).features)
@@ -34,7 +35,7 @@ function map(us, stats, stateObject) {
 
   g.append("path")
       .attr("fill", "none")
-      .attr("stroke", "gray")
+      .attr("stroke", "black")
       .attr("stroke-linejoin", "round")
       .attr("d", path(topojson.mesh(us, us.objects.states, (a, b) => a !== b)));
 
@@ -53,7 +54,7 @@ function map(us, stats, stateObject) {
     const [[x0, y0], [x1, y1]] = path.bounds(d);
     event.stopPropagation();
     states.transition().style("fill", "#262626");
-    d3.select(this).transition().style("fill", "darkgray");
+    d3.select(this).transition().style("fill", "#29DEF2");
     svg.transition().duration(750).call(
       zoom.transform,
       d3.zoomIdentity
