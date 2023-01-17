@@ -13,7 +13,10 @@ const LINKS = {
         2: 'https://api.census.gov/data/timeseries/govs?get=NAME,TOT_EMP&for=state:*&time=2019&key=80815206a6c8e5c391e74cfd3884b9b0d90f316d',
         3: 'https://api.census.gov/data/timeseries/govs?get=NAME,TOT_EMP&for=state:*&time=2018&key=80815206a6c8e5c391e74cfd3884b9b0d90f316d',
         4: 'https://api.census.gov/data/timeseries/govs?get=NAME,TOT_EMP&for=state:*&time=2017&key=80815206a6c8e5c391e74cfd3884b9b0d90f316d'
-    }
+    },
+
+    'gdp': 'https://apps.bea.gov/api/data?&UserID=63D07D0B-8744-419D-821C-656CB11239D2&method=getdata&datasetname=Regional&GeoFips=STATE&LineCode=1&TableName=CAGDP2&ResultFormat=JSON',
+    'personalIncome': 'https://apps.bea.gov/api/data?&UserID=63D07D0B-8744-419D-821C-656CB11239D2&method=getdata&datasetname=Regional&GeoFips=STATE&LineCode=30&TableName=SAINC50&ResultFormat=JSON'
 }
 
 export default LINKS;
