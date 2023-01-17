@@ -3,6 +3,8 @@ import Census from './scripts/census';
 import Bea from './scripts/bea';
 import Stats from './scripts/stats';
 import State from './scripts/state';
+import * as Plot from "@observablehq/plot";
+import LineChart from '../dist/lineChart';
 
 document.addEventListener('DOMContentLoaded', async () => {
   const mapDiv = document.getElementById('map');
@@ -23,8 +25,37 @@ document.addEventListener('DOMContentLoaded', async () => {
   const loadMap = map(mapJson, stats, states);
   mapDiv.appendChild(loadMap);
 
+  let alabama = states['Alabama'].populationHist;
+
+  let chartInput = []
+
+  alabama.forEach((ele, i) => {
+    let obj = {};
+
+    let date = new Date(`2000-0${i + 1}-01`)
+    obj['date'] = date;
+    obj['population'] = parseInt(ele.slice(0, 3))
+    obj['state'] = 'Alabama'
+    chartInput.push(obj)
+  })
+
+
+  let chart = LineChart(chartInput, {
+    x: d => d.date,
+    y: d => d.population,
+    z: d => d.state,
+    yDomain: [450, 550],
+    yLabel: "↑ Unemployment (%)",
+    height: 500,
+    width: 500,
+    color: "gray",
+  })
+
+  let bar = document.getElementById('chart');
+  bar.appendChild(chart)
 
 });
+
 
 
 const setupData = async () => {

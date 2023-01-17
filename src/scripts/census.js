@@ -29,7 +29,7 @@ class Census {
             keys = keys.map((key) => key === 'POP_2021' || key === 'POP_2020' ? key = 'POP' : key);
 
             jsonObject = data.slice(1).reduce((acc, item) => {
-                let nameIdx = keys.indexOf('NAME');
+                let nameIdx = keys.includes('NAME') ? keys.indexOf('NAME') : keys.indexOf("GEONAME");
                 acc[item[nameIdx]] = keys.reduce((obj, key, index) => {
                     if (key !== 'NAME') {
                         obj[key] = item[index];

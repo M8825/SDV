@@ -14,6 +14,7 @@ class State {
         constructor(name, data) {
             this.name = name;
             this.population = data.getStatsCensus(name, data.populationHistorical, 0);
+            this.populationHist = data.getStatsCensus(name, data.populationHistorical);
             this.employment = data.getStatsCensus(name, data.employmentHistorical, 0);
             this.gdp = data.getStatsBea(name, data.gdpHistorical, 4);
             this.personalIncome = data.getStatsBea(name, data.personalIncomeHistorical, 4);
