@@ -20,10 +20,9 @@
         * DataValue - GDP
 
 
-
 - [ ] GDP Per Capita - I'll take population and divide it by GDP
 
-- [ ] Bureau of Labor Statistics - Per Capita Personal Income - Alabama link - Last 5 years
+- [X] Bureau of Economic Analysis - Per Capita Personal Income - Alabama link - Last 5 years
     - https://apps.bea.gov/api/data?&UserID=63D07D0B-8744-419D-821C-656CB11239D2&method=getdata&datasetname=Regional&GeoFips=01000&LineCode=30&TableName=SAINC50&ResultFormat=JSON
 
 

@@ -2,14 +2,23 @@ body {
     background-color: black;
 }
 
-
-#stats {
-    color: white;
-    border-color: gray;
+#container {
+    display: flex;
+    height: 100vh;
 }
+
+#map {
+    height: 100vh;
+    width: 30%;
+}
+
 
 
 h2 {
     font-size: 30px;
     font-weight: 700;
 }
+
+
+
+

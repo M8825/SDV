@@ -1,6 +1,6 @@
 function map(us, stats, stateObject) {
-  const width = 1800;
-  const height = 810;
+  const width = 800;
+  const height = 600;
 
   const path = d3.geoPath()
 

@@ -11,10 +11,18 @@ class Stats {
 
         for (let key in state) {
             let liEl = document.createElement('li');
+            let divName = document.createElement('div');
+            let divValue = document.createElement('div');
             let upperCaseName = key[0].toUpperCase() + key.slice(1);
             let stateAttributeValue = state[key];
 
-            liEl.innerHTML = `${upperCaseName}: ${stateAttributeValue}`;
+            divName.innerHTML = upperCaseName;
+            divValue.innerHTML = stateAttributeValue;
+
+            liEl.appendChild(divName)
+            liEl.appendChild(divValue)
+            liEl.setAttribute('class', 'stats-item')
+
             ul.appendChild(liEl);
         }
 
