@@ -8,18 +8,32 @@ class State {
                         states[names[i]] = new State(names[i], data);
                 }
 
-                return states;
+               return states;
         }
 
         constructor(name, data) {
             this.name = name;
-            this.population = data.getStatsCensus(name, data.populationHistorical, 0);
+
+            let populationArray = data.getStatsCensus(name, data.populationHistorical, 0);
+            this.population = (parseInt((populationArray[0])) / 1000000).toFixed(2);
+            this.populationStatus = populationArray[1];
             this.populationHist = data.getStatsCensus(name, data.populationHistorical);
-            this.employment = data.getStatsCensus(name, data.employmentHistorical, 0);
+
+
+            let employmentArray = data.getStatsCensus(name, data.employmentHistorical, 0);
+            this.employment = (parseInt((employmentArray[0])) / parseInt(populationArray[0]) * 100).toFixed(2)
+        //     (parseInt((employmentArray[0])) / 1000).toFixed(2);
+            this.employmentStatus = employmentArray[1];
             this.employmentHist = data.getStatsCensus(name, data.employmentHistorical);
-            this.gdp = data.getStatsBea(name, data.gdpHistorical, 4);
+
+            let gdpArray = data.getStatsBea(name, data.gdpHistorical, 4);
+            this.gdp = (parseInt((gdpArray[0].split(',').join(''))) / 1000000).toFixed(2);
+            this.gdpStatus = gdpArray[1];
             this.gdpHist = data.getStatsBea(name, data.gdpHistorical)
-            this.personalIncome = data.getStatsBea(name, data.personalIncomeHistorical, 4);
+
+            let personalIncomeArray = data.getStatsBea(name, data.personalIncomeHistorical, 4);
+            this.personalincome = personalIncomeArray[0];
+            this.personalIncomeStatus = personalIncomeArray[1];
             this.personalIncomeHist = data.getStatsBea(name, data.personalIncomeHistorical);
         }
 

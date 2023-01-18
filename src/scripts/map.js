@@ -53,14 +53,15 @@ function map(us, stats, stateObject) {
   function clicked(event, d) {
     const [[x0, y0], [x1, y1]] = path.bounds(d);
     event.stopPropagation();
-    states.transition().style("fill", "#262626");
-    d3.select(this).transition().style("fill", "#29DEF2");
+    states.transition().style("fill", "#262626")
+    d3.select(this).transition().style("fill", "#29DEF2")
     svg.transition().duration(750).call(
       zoom.transform,
       d3.zoomIdentity
         .translate(width / 2, height / 2)
         .scale(Math.min(3, 0.4 / Math.max((x1 - x0) / width, (y1 - y0) / height)))
         .translate(-(x0 + x1) / 2, -(y0 + y1) / 2),
+
       d3.pointer(event, svg.node())
     );
 

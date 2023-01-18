@@ -3,10 +3,7 @@ import Census from './scripts/census';
 import Bea from './scripts/bea';
 import Stats from './scripts/stats';
 import State from './scripts/state';
-import * as Plot from "@observablehq/plot";
 import LineChart from '../dist/lineChart';
-import { display } from './scripts/treemap';
-import { data } from './scripts/datajson';
 
 document.addEventListener('DOMContentLoaded', async () => {
   const mapDiv = document.getElementById('map');
@@ -47,7 +44,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     y: d => d.population,
     z: d => d.state,
     yDomain: [450, 550],
-    yLabel: "↑ Unemployment (%)",
+    yLabel: ".",
     height: 500,
     width: 500,
     color: "gray",
