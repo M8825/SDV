@@ -10,8 +10,9 @@ class Stats {
         let ul = document.createElement('ul');
 
         for (let key in state) {
+            if (key === 'setUpLineChartHistorical') continue;
             let lastFourDigits = key.slice(key.length - 4);
-            if ( lastFourDigits === 'Hist') continue;
+            if (lastFourDigits === 'Hist') continue;
             let liEl = document.createElement('li');
             let divName = document.createElement('div');
             let divValue = document.createElement('div');
@@ -33,10 +34,15 @@ class Stats {
     }
 
     update(state) {
-        let lis = this.divEl.querySelectorAll('ul li');
-        Object.keys(state).forEach((key, i) => {
-            lis[i].innerText = `${key[0].toUpperCase() + key.slice(1)}: ${state[key]}`;
-        })
+        let lis = document.querySelectorAll('#stats ul li');
+        // Object.keys(state).forEach((key, i) => {
+
+        for (let i = 0; i < lis.length; i++) {
+            debugger
+            // lis[i].querySelectorAll('div')[0].innerHTML = `${key[0].toUpperCase() + key.slice(1)}`
+            let stateAttribute = lis[i].querySelectorAll('div')[0].innerText.toLowerCase();
+            lis[i].querySelectorAll('div')[1].innerHTML = `${state[stateAttribute]}`;
+        }
     }
 }
 

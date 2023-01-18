@@ -22,3 +22,9 @@
     padding: 4.5%;
     border-bottom: 1px groove #3B848C;
 }
+
+#stats-ul > li :first-child {
+    text-align: right;
+    margin-right: 20%;
+    font-weight: 700;
+}

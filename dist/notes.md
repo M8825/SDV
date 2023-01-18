@@ -30,17 +30,9 @@
 ## State passed object
 
 {
-    "name": "Alabama",
-    "population": [4903185, 1],
-    "gdp": 222,
-    "gdpPerCapita": 45,
-    "employment": 2.5,
-    "personalIncome": 45
 }
 
 
-## Colors
-- lines gray - #161616
-
 
 # TODOs
+- [ ] make update function abstract
