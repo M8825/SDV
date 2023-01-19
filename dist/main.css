@@ -148,7 +148,6 @@ table {
     flex-direction: column;
     color: #29DEF2;
     border-color: #0F31F2;
-    padding: 35px;
     padding-top: 0px;
     width: 100%;
     height: 100%;
@@ -163,7 +162,8 @@ table {
 
 #stats-ul > li {
     padding: 4.5%;
-    border-bottom: 1px groove #3B848C;
+    border-bottom: 1px outset #3B848C;
+    margin-right: 10px;
 }
 
 #stats-ul > li :first-child {
@@ -181,27 +181,6 @@ table {
     font-size: large;
 }
 
-
-
-/* .stats-item {
-    animation: counter 5s;
-    counter-reset: num var(--num);
-    padding: 2rem;
-}
-
-.stats-item::after {
-    content: counter(num);
-}
-
-@keyframes counter {
-    from {
-        --num: var(--Population) - 10000;
-    }
-    to {
-        --num: var(--Population);
-    }
-} */
-
 /*!***************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/style/body.scss ***!
   \***************************************************************************************************/
@@ -212,12 +191,8 @@ body {
 
 #container {
     display: flex;
+    width: 100vw;
     height: 100vh;
-}
-
-#map {
-    height: 100vh;
-    width: 30%;
 }
 
 h2 {
@@ -228,19 +203,16 @@ h2 {
     background-color: rgba(255,255,255,0.01);
     padding: 2%;
     border-bottom: 1px groove #3B848C;
-    padding-left: 5%;
     color: #29DEF2;
 }
-
-
-
-
 
 /*!****************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/style/chart.scss ***!
   \****************************************************************************************************/
 #chart {
     color: #29DEF2;
+    font-family: 'Inconsolata', monospace;
+    width: 100%;
 }
 
 /*!**************************************************************************************************************!*\
@@ -250,7 +222,102 @@ h2 {
     color: #D9D9D9;
     display: flex;
     flex-direction: column;
+    width: 40vw;
+}
+
+/*!****************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/style/model.scss ***!
+  \****************************************************************************************************/
+#modul {
+    backdrop-filter: blur(40px);
+    z-index: 1;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#box-modul {
+    background-color: #010D00;
+    border: 1px solid #29DEF2;
+    border-radius: 70px;
+    width: 80vw;
+    height: 1000px;
+    position: fixed;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#modul_top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    height: 80%;
+    margin-top: 3%;
+}
+
+#modul_imgs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
     width: 40%;
+}
+
+#model_map {
+    width: 300px;
+    height: 200px;
+}
+
+#model_stats {
+    width: 300px;
+    height: 280px;
+}
+
+#model_chart {
+    width: 300px;
+    height: 280px;
+}
+
+#modul_text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: start;
+    width: 60%;
+    color: #29DEF2;
+    font-family: 'Inconsolata', monospace;
+    font-size: 30px;
+    padding-right: 6%;
+}
+
+.first_word {
+    color: black;
+    background-color: #29DEF2;
+    padding: 5px;
+    font-size: 28px;
+}
+
+
+#modul_button {
+    margin-top: 30px;
+    font-size: 50px;
+    border-radius: 13px;
+    width: 20%;
+    border: 2px solid #29DEF2;
+    background-color: #010D00;
+    color: #29DEF2;
+}
+
+#modul_button:hover {
+    background-color: #29DEF2;
+    color: #010D00;
 }
 
 /*!*************************************************************************************************************************************!*\

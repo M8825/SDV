@@ -29,7 +29,6 @@ function Choropleth(data, {
 
   debugger
   // Compute values.
-  debugger
   const N = d3.map(data, id);
   const V = d3.map(data, value).map(d => d == null ? NaN : +d);
   const Im = new d3.InternMap(N.map((id, i) => [id, i]));

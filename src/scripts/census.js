@@ -81,15 +81,17 @@ class Census {
 
         for (let i = 0; i < 5; i++) {
             let statValue = data[i][state][searchKey];
+            if (statValue === undefined) continue;
+
             outputData.push(statValue);
         }
 
-        let histObj = {
-            values: outputData,
-            dataType: data['data']
-        }
+        // let histObj = {
+        //     values: outputData,
+        //     dataType: data['data']
+        // }
 
-        return histObj
+        return outputData;
     }
 
 

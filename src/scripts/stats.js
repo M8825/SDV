@@ -1,4 +1,4 @@
-
+import State from './state';
 class Stats {
     constructor(divEl, states) {
         this.divEl = divEl;
@@ -41,7 +41,6 @@ class Stats {
                let divSuffix = document.createElement('div')
 
                let index = i % 2 === 0 ? 1 : 0;
-               debugger
                if (capitalizeName === 'EMPLOYMENT') {
                 divSuffix.innerHTML = '%';
                } else {
@@ -57,13 +56,6 @@ class Stats {
             if (i > 0)  {
                 liEl.classList.add('class', 'selectable')
             }
-
-            // window.CSS.registerProperty({
-            //     name: "--fdfafdafa",
-            //     syntax: '<number>',
-            //     initialValue: 12043423,
-            //     inherits: false
-            // });
 
             ul.appendChild(liEl);
 
@@ -95,7 +87,88 @@ class Stats {
             status || state[status] === 1 ? divValue.style = 'color: green' : divValue.style = 'color: red';
         }
     }
+
+
+    // chartData(data) {
+
+    //     let chartDataObj = {}
+
+    //     for (let category in data) {
+    //         debugger
+    //         if (category === 'name') continue;
+    //         for (let year in data[category]) {
+    //             let count = 0;
+    //             // debugger
+    //             for (let state in data[category][year]) {
+
+    //                 if (state === 'dataType' || year === 'data') continue;
+    //                 console.log(category)
+    //                 // TOT_EMP
+    //                 let keyWord = data[category]['data'] === 'employment' ? 'TOT_EMP' : 'POP';
+    //                 let intStat;;
+    //                 if (category === 'gdpHistorical' || category === 'personalIncomeHistorical') {
+    //                     intStat = parseInt(data[category][year][state].split(',').join(''));
+    //                 } else {
+    //                     intStat = parseInt(data[category][year][state][keyWord].split(',').join(''));
+    //                 }
+    //                 count += intStat
+    //             }
+
+    //             if (chartDataObj[category] === undefined && year !== 'data') {
+    //                 let categoryObj = {};
+    //                 chartDataObj[category] = categoryObj[year] = [];
+    //             }
+
+    //             chartDataObj[category][year] = count;
+    //         }
+    //         // debugger
+    //         // chartDataObj[category] = count;
+    //     }
+
+    //     window['chartData'] = chartDataObj;
+    //     // return chartDataObj;
+    // }
+
+    chartData(data) {
+        window['usTotal'] = [];
+
+        this.setCategory();
+        let category = window['chartCategory'];
+        let getStatsCensusHist = data['getStatsCensus'] // TODO: Determine which data api endpoint to use
+
+        let allStatesHistValuesAllYears = []
+
+        Object.keys(data[category][0]).forEach(stateName => {
+            if (stateName !== 'dataType') {
+                allStatesHistValuesAllYears.push(getStatsCensusHist(stateName, data[category]))
+            }
+        });
+
+
+
+        let totalHistValuesAllYears = []
+        for (let i = 0; i < 5; i++) {
+            let count = 0;
+
+            allStatesHistValuesAllYears.forEach((stateHistValues)=> {
+                count += parseInt(stateHistValues[i]);
+            })
+
+            window['usTotal'].push(count);
+            totalHistValuesAllYears.push(Math.round(count / 52));
+        }
+
+        return State.setUpLineChartHistorical(totalHistValuesAllYears);
+
+    }
+
+    setCategory() {
+        if (window['chartCategory'] === undefined) {
+            window['chartCategory'] = 'populationHistorical'
+        }
+    }
+
 }
 
-
 export default Stats;
+

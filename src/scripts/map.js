@@ -1,6 +1,11 @@
-function map(us, stats, stateObject) {
-  const width = 1200;
-  const height = 800;
+import State from "./state";
+
+function map(us, stats, statesObject, setupLineChart) {
+  var selection = d3.select("#map");
+
+  let width = selection._groups[0][0].clientWidth;
+  // const width = 1050;
+  const height = selection._groups[0][0].clientWidth - 250;
 
   const path = d3.geoPath()
 
@@ -15,7 +20,7 @@ function map(us, stats, stateObject) {
       .on("zoom", zoomed);
 
   const svg = d3.create("svg")
-      .attr("viewBox", [0, 0, width, height])
+      .attr("viewBox", [1, 1, width, height])
       .on("click", reset);
 
   const g = svg.append("g");
@@ -65,12 +70,26 @@ function map(us, stats, stateObject) {
       d3.pointer(event, svg.node())
     );
 
-    stats.update(stateObject[d.properties.name])
+    // stats.update(statesObject[d.properties.name])
+
+    let clickedStateName = d.properties.name
+    let clickedState = statesObject[clickedStateName]
+
+    stats.update(clickedState)
+
+    let stateData = State.setUpLineChartHistorical(statesObject[clickedStateName].populationHist, clickedStateName);
+    let chart = setupLineChart(window['usData'].concat(stateData) )
+
+    let lineChart = document.getElementById('chart');
+    lineChart.innerHTML = '';
+    lineChart.appendChild(chart)
+
+
+    // let lineChart = document.getElementById('chart');
   }
 
 
   return svg.node();
 }
-
 
 export default map;

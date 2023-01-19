@@ -5,53 +5,78 @@ import Stats from './scripts/stats';
 import State from './scripts/state';
 import LineChart from '../dist/lineChart';
 
+
 document.addEventListener('DOMContentLoaded', async () => {
-  const mapDiv = document.getElementById('map');
-  const statsEl = document.getElementById('stats');
-  mapDiv.style.width = '100%';
+    const mapDiv = document.getElementById('map');
+    const statsEl = document.getElementById('stats');
+    mapDiv.style.width = '100%';
 
 
-  // Load map
-  const res = await fetch(`https://cdn.jsdelivr.net/npm/us-atlas@3/states-albers-10m.json`)
-  const mapJson = await res.json()
+    // Load map
+    const res = await fetch(`https://cdn.jsdelivr.net/npm/us-atlas@3/states-albers-10m.json`)
+    const mapJson = await res.json()
 
 
-  // Fetch and setup data
-  const data = await setupData()
-  const states = State.setupStates(data);
-  const stats = new Stats(statsEl, states);
+    // Fetch and setup data
+    const data = await setupData()
+    const states = State.setupStates(data);
+    const stats = new Stats(statsEl, states);
 
-  const loadMap = map(mapJson, stats, states);
-  mapDiv.appendChild(loadMap);
+    window['chartCategory'] = 'populationHistorical'
+    window['usData'] = stats.chartData(data);
 
-  let alabama = states['Alabama'].populationHist;
+    let stateData = State.setUpLineChartHistorical(states['Ohio'].populationHist, 'Ohio');
 
-  let chartInput = []
+    const loadMap = map(mapJson, stats, states, setupLineChart);
+    let chart = setupLineChart(window['usData'].concat(stateData));
+    mapDiv.appendChild(loadMap);
 
-  alabama['values'].forEach((ele, i) => {
-    let obj = {};
+    // let alabama = states['Alabama'].populationHist;
+    // let texas = states['Texas'].populationHist
 
-    let date = new Date(`2000-0${i + 1}-01`)
-    obj['date'] = date;
-    obj['population'] = parseInt(ele.slice(0, 3))
-    obj['state'] = 'Alabama'
-    chartInput.push(obj)
-  })
+    // let chartInput = []
+
+    // alabama['values'].forEach((ele, i) => {
+    //     let obj = {};
+
+    //     let date = new Date(`2000-0${i + 1}-01`)
+    //     obj['date'] = date;
+    //     obj['population'] = parseInt(ele.slice(0, 3))
+    //     obj['state'] = 'Alabama'
+    //     chartInput.push(obj)
+    // })
+
+    // texas['values'].forEach((ele, i) => {
+    //     let obj = {};
+
+    //     let date = new Date(`2000-0${i + 1}-01`)
+    //     obj['date'] = date;
+    //     obj['population'] = parseInt(ele.slice(0, 4))
+    //     obj['state'] = 'Texas'
+    //     chartInput.push(obj)
+    // })
+
+    // debugger
+
+    // let chart = LineChart(chartInput, {
+    //     x: d => d.date,
+    //     y: d => d.population,
+    //     z: d => d.state,
+    //     // yDomain: [450, 550],
+    //     yLabel: ".",
+    //     height: 500,
+    //     width: 500,
+    //     color: "gray",
+    // })
 
 
-  let chart = LineChart(chartInput, {
-    x: d => d.date,
-    y: d => d.population,
-    z: d => d.state,
-    yDomain: [450, 550],
-    yLabel: ".",
-    height: 500,
-    width: 500,
-    color: "gray",
-  })
+    let modButton = document.getElementById('modul_button')
 
-  let bar = document.getElementById('chart');
-  bar.appendChild(chart)
+    modButton.addEventListener('click', () => {
+        document.getElementById('modul').remove();
+    });
+    let bar = document.getElementById('chart');
+    bar.appendChild(chart)
 
 
 });
@@ -59,38 +84,37 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 const setupData = async () => {
-  const census = new Census();
-  const bea = new Bea();
-  const populationHistorical = await Census.fetchData(census.populationLinks);
-  const employmentHistorical = await Census.fetchData(census.employmentLinks);
-  const gdpHistorical = await Bea.fetchData(bea.gdpLink);
-  const personalIncomeHistorical = await Bea.fetchData(bea.personalIncomeLink);
+    const census = new Census();
+    const bea = new Bea();
+    const populationHistorical = await Census.fetchData(census.populationLinks);
+    const employmentHistorical = await Census.fetchData(census.employmentLinks);
+    const gdpHistorical = await Bea.fetchData(bea.gdpLink);
+    const personalIncomeHistorical = await Bea.fetchData(bea.personalIncomeLink);
 
-  const data = {
-    'name': '',
-    'populationHistorical': populationHistorical,
-    'employmentHistorical': employmentHistorical,
-    'gdpHistorical': gdpHistorical,
-    'personalIncomeHistorical': personalIncomeHistorical,
-    'getStatsCensus': census.getStateStats,
-    'getStatsBea': bea.getStateStats,
-  }
+    const data = {
+        'name': '',
+        'populationHistorical': populationHistorical,
+        'employmentHistorical': employmentHistorical,
+        'gdpHistorical': gdpHistorical,
+        'personalIncomeHistorical': personalIncomeHistorical,
+        'getStatsCensus': census.getStateStats,
+        'getStatsBea': bea.getStateStats,
+    }
 
-  return data;
+    return data;
 }
 
 
-// const setupLineChart = (data) => {
-//   const chart = LineChart(data, {
-//     x: d => d.date,
-//     y: d => d.population,
-//     z: d => d.state,
-//     yDomain: [450, 550],
-//     yLabel: "↑ Unemployment (%)",
-//     height: 500,
-//     width: 500,
-//     color: "gray",
-//   });
+const setupLineChart = (data) => {
 
-//   return chart;
-// }
+    return LineChart(data, {
+        x: d => d.date,
+        y: d => d.populationHistorical,
+        z: d => d.state,
+        yDomain: [1, 30],
+        yLabel: "↑ Unemployment (%)",
+        height: 500,
+        width: 500,
+        color: "#29DEF2",
+    });
+}

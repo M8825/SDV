@@ -42,18 +42,21 @@ class State {
         }
 
 
-        setUpLineChartHistorical = () => {
+        static setUpLineChartHistorical = (dataArrayFiveYears, name='US') => {
+
+                let dates = ['2021-04-02', '2020-04-02', '2019-04-02', '2018-04-02', '2017-04-02']
                 let historicalData = [];
-                let dates = ['2017-01-01', '2018-01-01', '2019-01-01', '2020-01-01', '2021-01-01',]
 
-                this.populationHist.forEach((ele, i) => {
-                        let obj = {};
+                dataArrayFiveYears.forEach((ele, i) => {
+                        let lineData = {};
 
-                        let date = new Date(dates[i])
-                        obj['date'] = date;
-                        obj['population'] = parseInt(ele.slice(0, 3))
-                        obj['state'] = this.name
-                        chartInput.push(obj)
+                        // let presentOfTotal = (parseInt(ele) / window['usTotal'][i] * 100).toFixed(10);
+                        // lineData[window['chartCategory']] = parseFloat(presentOfTotal);
+                        lineData['date'] = new Date(dates[i])
+                        lineData[window['chartCategory']] = parseInt(ele) / 1000000;
+                        lineData['state'] = name;
+
+                        historicalData.push(lineData)
                 });
 
                 return historicalData;

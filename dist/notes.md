@@ -35,4 +35,22 @@
 
 
 # TODOs
-- [ ] make update function abstract
+- [X] make update function abstract
+- CHART:
+    - BY YEAR - 5 years
+        * Total Population in state
+        * Total Employment in US
+        * Total GDP in US
+        * Total Personal Income in US
+
+
+
+#map {
+    height: 100vh;
+    width: 30%;
+}
+
+
+* Chart
+    - [ ] window['chartCategory'] should be set by even listener when you click <li> on stats table
+        - or it will be set automatically to population in stats.setCategory()

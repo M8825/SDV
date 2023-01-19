@@ -1,5 +1,3 @@
-const d3 = require("d3@6")
-
 const chart = function(width, height, data) {
     const x = d3.scaleLinear().rangeRound([0, width]);
     const y = d3.scaleLinear().rangeRound([0, height]);
@@ -43,6 +41,7 @@ const chart = function(width, height, data) {
       node.append("title")
           .text(d => `${name(d)}\n${format(d.value)}`);
 
+          debugger
       node.append("rect")
           .attr("id", d => (d.leafUid = DOM.uid("leaf")).id)
           .attr("fill", d => d === root ? "#fff" : d.children ? "#ccc" : "#ddd")
