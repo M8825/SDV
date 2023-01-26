@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <title>Stately</title>
     <!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
@@ -9,74 +8,117 @@
     <script src="https://cdn.jsdelivr.net/npm/topojson@3"></script>
     <!-- <script src="../node_modules/c3/c3.min.js"></script> -->
     <script defer src="./dist/main.js"></script>
-    <link rel="stylesheet" href="./dist/main.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./dist/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+      rel="stylesheet"
+    />
     <!-- <link rel="stylesheet" href="../node_modules/c3/c3.css"> -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
-    <link rel="icon" type="image/x-icon" href="./src/imgs/favicon.svg">
-</head>
+    <link rel="icon" type="image/x-icon" href="./src/imgs/favicon.svg" />
+  </head>
 
-<body>
+  <body>
     <div id="container">
-        <div id="modul">
-            <div id="box-modul">
-                <div id="modul_top" >
-                    <div id="modul_imgs">
-                        <img id="model_map" src="./src/imgs/map.png" alt="" srcset="">
-                        <img id="model_stats" src="./src/imgs/stats.png" alt="">
-                        <img id="model_chart" src="./src/imgs/chart.png" alt="">
-                    </div>
-                    <div id="modul_text" >
-                        <div id="map_text">
-                            <span class="first_word">Map</span>
-                            <br>
-                            <br>
-                            Click on a state to see the relevant economic data.
-                        </div>
+      <div id="modul">
+        <div id="box-modul">
+          <h1 id="box_mode__app_name_title">Stately</h1>
+          <div id="modul_top">
+            <div id="modul_imgs">
+              <img id="model_map" src="./src/imgs/map.png" alt="" srcset="" />
+              <div id="model_stats_image">
+                <img id="model_stats" src="./src/imgs/stats.png" alt="" />
+              </div>
 
-                        <div id="stats_text">
-                            <span class="first_word">Statistics</span>
-                            <br>
-                            <br>
-                            View statistics for any state.
-                        </div>
+              <div id="model_chart_image">
+                <img id="model_chart" src="./src/imgs/chart.png" alt="" />
+              </div>
+            </div>
+            <div id="modul_text">
+              <div id="map_text">
+                <span class="first_word">Map</span>
+                <br />
+                <br />
+                Click on a state to see the relevant economic data. Zoom in/out with the mouse wheel.
+              </div>
 
-                        <div id="chart_text">
-                            <span class="first_word">Historical chart</span>
-                            <br>
-                            <br>
-                            Compares the evolution of the selected data of the selected state with the historical US data.
-                        </div>
-                    </div>
-                </div>
+              <div id="stats_text">
+                <span class="first_word">Statistics</span>
+                <br />
+                <br />
+                View statistics for selected state.
+              </div>
 
-                <br>
-                <button id="modul_button">Enter</button>
+              <div id="chart_text">
+                <span class="first_word">Historical chart</span>
+                <br />
+                <br />
+                Compares the evolution of the selected
+                state with the historical US data.
+              </div>
+            </div>
+          </div>
+
+          <br />
+          <div class="loading">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+
+          <button id="modul_button">Enter</button>
+        </div>
+      </div>
+      <div id="map"></div>
+      <div id="chart_stats_container">
+        <br />
+        <h2>Historical Chart</h2>
+        <div id="chart"></div>
+
+        <div style="width: 100%">
+          <h2>Statistics - 2021</h2>
+        </div>
+        <div id="stats">
+          <br />
+        </div>
+        <div id="chart_stats_container__container">
+            <h1 id="box_mode__app_name_title">Stately</h1>
+            <div id="chart_stats_container__container__logo_links">
+                <div class="chart_stats_container__container__logo">
+                    <a href="https://github.com/M8825">
+                      <img src="./src/imgs/github-mark.svg" alt="github" />
+                    </a>
+                  </div>
+
+                  <div class="chart_stats_container__container__logo">
+                    <a href="https://www.linkedin.com/in/malkhaz-mamulashvili-703a97208/">
+                      <img src="./src/imgs/LI-In-Bug.png" alt="likedIn"/>
+                    </a>
+                  </div>
             </div>
         </div>
-        <div id="map">
-        </div>
-        <div id="chart_stats_container">
-            <br>
-            <h2>Historical Chart</h2>
-            <div id="chart">
-            </div>
-
-            <div id="stats">
-                <h2>Statistics - 2021</h2>
-                <br>
-            </div>
-        </div>
+      </div>
     </div>
+  </body>
 
-</body>
-
-<!-- <script>
+  <!-- <script>
         if ("serviceWorker" in navigator) {
             window.addEventListener("load", () => {
                 navigator.serviceWorker
@@ -90,5 +132,4 @@
             });
         }
     </script> -->
-
 </html>

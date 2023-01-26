@@ -31,56 +31,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     let chart = setupLineChart(window['usData'].concat(stateData));
     mapDiv.appendChild(loadMap);
 
-    // let alabama = states['Alabama'].populationHist;
-    // let texas = states['Texas'].populationHist
 
-    // let chartInput = []
+    let lineChart = document.getElementById('chart');
+    lineChart.appendChild(chart)
 
-    // alabama['values'].forEach((ele, i) => {
-    //     let obj = {};
-
-    //     let date = new Date(`2000-0${i + 1}-01`)
-    //     obj['date'] = date;
-    //     obj['population'] = parseInt(ele.slice(0, 3))
-    //     obj['state'] = 'Alabama'
-    //     chartInput.push(obj)
-    // })
-
-    // texas['values'].forEach((ele, i) => {
-    //     let obj = {};
-
-    //     let date = new Date(`2000-0${i + 1}-01`)
-    //     obj['date'] = date;
-    //     obj['population'] = parseInt(ele.slice(0, 4))
-    //     obj['state'] = 'Texas'
-    //     chartInput.push(obj)
-    // })
-
-    // debugger
-
-    // let chart = LineChart(chartInput, {
-    //     x: d => d.date,
-    //     y: d => d.population,
-    //     z: d => d.state,
-    //     // yDomain: [450, 550],
-    //     yLabel: ".",
-    //     height: 500,
-    //     width: 500,
-    //     color: "gray",
-    // })
-
+    const loading = document.getElementsByClassName('loading');
+    loading[0].style.display = 'none';
 
     let modButton = document.getElementById('modul_button')
-
+    modButton.style.display = 'block';
     modButton.addEventListener('click', () => {
         document.getElementById('modul').remove();
     });
-    let bar = document.getElementById('chart');
-    bar.appendChild(chart)
-
-
 });
-
 
 
 const setupData = async () => {

@@ -20,7 +20,7 @@ function map(us, stats, statesObject, setupLineChart) {
       .on("zoom", zoomed);
 
   const svg = d3.create("svg")
-      .attr("viewBox", [1, 1, width, height])
+      .attr("viewBox", [-200, -200, width, height])
       .on("click", reset);
 
   const g = svg.append("g");

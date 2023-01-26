@@ -88,7 +88,8 @@ function LineChart(data, {
 
   svg.append("g")
     .attr("transform", `translate(0,${height - marginBottom})`)
-    .call(xAxis);
+    .attr("stroke-opacity", "0.3")
+    .call(xAxis)
 
   // Y axis
   svg.append("g")
