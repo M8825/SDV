@@ -16,7 +16,7 @@ const LINKS = {
     },
 
     'gdp': 'https://apps.bea.gov/api/data?&UserID=63D07D0B-8744-419D-821C-656CB11239D2&method=getdata&datasetname=Regional&GeoFips=STATE&LineCode=1&TableName=CAGDP2&ResultFormat=JSON',
-    'personalIncome': 'https://apps.bea.gov/api/data?&UserID=63D07D0B-8744-419D-821C-656CB11239D2&method=getdata&datasetname=Regional&GeoFips=STATE&LineCode=30&TableName=SAINC50&ResultFormat=JSON'
+    'personalIncome': 'https://apps.bea.gov/api/data?&UserID=63D07D0B-8744-419D-821C-656CB11239D2&method=getdata&datasetname=Regional&GeoFips=STATE&LineCode=30&TableName=SAINC50&Year=2017,2018,2019,2020,2021&ResultFormat=JSON'
 }
 
 export default LINKS;

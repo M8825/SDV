@@ -29,7 +29,6 @@ function LineChart(data, {
   voronoi // show a Voronoi overlay? (for debugging)
 } = {}) {
   // Compute values.
-  // debugger
 
   const X = d3.map(data, x);
   const Y = d3.map(data, y);
@@ -47,7 +46,6 @@ function LineChart(data, {
   // Omit any data not present in the z-domain.
   const I = d3.range(X.length).filter(i => zDomain.has(Z[i]));
 
-  // debugger
   // width = d3.select("chart")._groups[0][0].clientWidth;
   // height = d3.select("chart")._groups[0][0].clientHeight;
   // Construct scales and axes.

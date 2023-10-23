@@ -88,47 +88,6 @@ class Stats {
         }
     }
 
-
-    // chartData(data) {
-
-    //     let chartDataObj = {}
-
-    //     for (let category in data) {
-    //         debugger
-    //         if (category === 'name') continue;
-    //         for (let year in data[category]) {
-    //             let count = 0;
-    //             // debugger
-    //             for (let state in data[category][year]) {
-
-    //                 if (state === 'dataType' || year === 'data') continue;
-    //                 console.log(category)
-    //                 // TOT_EMP
-    //                 let keyWord = data[category]['data'] === 'employment' ? 'TOT_EMP' : 'POP';
-    //                 let intStat;;
-    //                 if (category === 'gdpHistorical' || category === 'personalIncomeHistorical') {
-    //                     intStat = parseInt(data[category][year][state].split(',').join(''));
-    //                 } else {
-    //                     intStat = parseInt(data[category][year][state][keyWord].split(',').join(''));
-    //                 }
-    //                 count += intStat
-    //             }
-
-    //             if (chartDataObj[category] === undefined && year !== 'data') {
-    //                 let categoryObj = {};
-    //                 chartDataObj[category] = categoryObj[year] = [];
-    //             }
-
-    //             chartDataObj[category][year] = count;
-    //         }
-    //         // debugger
-    //         // chartDataObj[category] = count;
-    //     }
-
-    //     window['chartData'] = chartDataObj;
-    //     // return chartDataObj;
-    // }
-
     chartData(data) {
         window['usTotal'] = [];
 
@@ -143,8 +102,6 @@ class Stats {
                 allStatesHistValuesAllYears.push(getStatsCensusHist(stateName, data[category]))
             }
         });
-
-
 
         let totalHistValuesAllYears = []
         for (let i = 0; i < 5; i++) {

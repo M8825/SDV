@@ -27,7 +27,6 @@ function Choropleth(data, {
 } = {}) {
 
 
-  debugger
   // Compute values.
   const N = d3.map(data, id);
   const V = d3.map(data, value).map(d => d == null ? NaN : +d);
@@ -39,7 +38,6 @@ function Choropleth(data, {
 
   // Construct scales.
   const color = scale(domain, range);
-  debugger
   if (color.unknown && unknown !== undefined) color.unknown(unknown);
 
   // Compute titles.
@@ -110,7 +108,6 @@ async function worldMapDraw(d) {
   const countriesMap = new Map(countries.features.map(d => [d.id, d]))
   const countrymesh = topojson.mesh(d, d.objects.countries, (a, b) => a !== b)
 
-  debugger
   const chart = Choropleth(hale, {
     id: d => d.id,
     value: d => d.rate,
@@ -215,5 +212,4 @@ export default worldMapDraw;
   const worldMapRes = await worldMapDraw(worldMapJson)
 
   const worldMapDiv = document.getElementById('world-map');
-  debugger
   worldMapDiv.append(worldMapRes)
