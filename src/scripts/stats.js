@@ -30,9 +30,6 @@ class Stats {
 
             this.setValueColor(state, key, divValue);
 
-            // let status = state[key + 'Status']
-            // status || state[status] === 1 ? divValue.style = 'color: green' : divValue.style = 'color: red';
-
             liEl.appendChild(divName)
             liEl.appendChild(divValue)
             liEl.setAttribute('class', 'stats-item')

@@ -3,9 +3,10 @@ import State from "./state";
 function map(us, stats, statesObject, setupLineChart) {
   var selection = d3.select("#map");
 
+  selection.style("background-color", "#404040")
+
   let width = selection._groups[0][0].clientWidth;
-  // const width = 1050;
-  const height = selection._groups[0][0].clientWidth - 250;
+  const height = selection._groups[0][0].clientHeight;
 
   const path = d3.geoPath()
 
