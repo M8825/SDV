@@ -23,14 +23,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     window['chartCategory'] = 'populationHistorical'
     window['usData'] = stats.chartData(data);
 
-    let stateData = State.setUpLineChartHistorical(states['Ohio'].populationHist, 'Ohio');
 
     // const loadMap = map(mapJson, stats, states, setupLineChart);
-    let chart = setupLineChart(window['usData'].concat(stateData));
     // mapDiv.appendChild(loadMap);
 
 
-    let lineChart = document.getElementById('chart');
+    const stateData = State.setUpLineChartHistorical(states['Ohio'].populationHist, 'Ohio');
+    const chart = setupLineChart(window['usData'].concat(stateData));
+    const lineChart = document.getElementById('chart');
     lineChart.appendChild(chart)
 
     const loading = document.getElementsByClassName('loading');
