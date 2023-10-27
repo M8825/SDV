@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     window['usData'] = stats.chartData(data);
 
 
+
     // const loadMap = map(mapJson, stats, states, setupLineChart);
     // mapDiv.appendChild(loadMap);
 
@@ -40,7 +41,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     modButton.addEventListener('click', () => {
         document.getElementById('modul').remove();
     });
+
+    window.addEventListener('resize', () => {
+        updateChart();
+        const lineChart = document.getElementById('chart');
+        lineChart.removeChild(lineChart.firstChild);
+
+        const chart = setupLineChart(window['usData'].concat(stateData));
+
+        lineChart.appendChild(chart);
+    });
 });
+
 
 
 const setupData = async () => {
@@ -74,7 +86,6 @@ const getParentDimensions = () => {
 
 const setupLineChart = (data) => {
     const [width, height] = getParentDimensions();
-    debugger
 
     return LineChart(data, {
         x: d => d.date,
