@@ -3,7 +3,7 @@ class Stats {
     constructor(divEl, states) {
         this.divEl = divEl;
         this.state = states['Alabama'];
-        divEl.appendChild(this.setUpStats(this.state));
+        // divEl.appendChild(this.setUpStats(this.state));
     }
 
     setUpStats(state) {

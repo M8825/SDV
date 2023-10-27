@@ -6,12 +6,18 @@
 
 #chart_stats_container {
     color: #D9D9D9;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 3fr 2fr 0.5fr; /* Fixed row definitions */
     width: 30vw;
+    height: 100vh;
     max-height: 100vh;
     background-color: green;
     box-sizing: border-box;
+
+    .chart_container {
+        width: 100%;
+        background-color: darkolivegreen;
+    }
 
     #links {
         display: flex;
