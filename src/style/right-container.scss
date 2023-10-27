@@ -11,12 +11,10 @@
     width: 30vw;
     height: 100vh;
     max-height: 100vh;
-    background-color: green;
     box-sizing: border-box;
 
     .chart_container {
         width: 100%;
-        background-color: darkolivegreen;
     }
 
     #links {
@@ -30,7 +28,6 @@
         padding-right: 15px;
         gap: 1%;
         box-sizing: border-box;
-        background-color: azure;
         flex-wrap: wrap;
 
         #logos_container {

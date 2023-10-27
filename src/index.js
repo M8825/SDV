@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     window['usData'] = stats.chartData(data);
 
 
-
     // const loadMap = map(mapJson, stats, states, setupLineChart);
     // mapDiv.appendChild(loadMap);
 
@@ -43,7 +42,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     window.addEventListener('resize', () => {
-        updateChart();
         const lineChart = document.getElementById('chart');
         lineChart.removeChild(lineChart.firstChild);
 
@@ -52,8 +50,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         lineChart.appendChild(chart);
     });
 });
-
-
 
 const setupData = async () => {
     const census = new Census();

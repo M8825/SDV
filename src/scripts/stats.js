@@ -3,7 +3,7 @@ class Stats {
     constructor(divEl, states) {
         this.divEl = divEl;
         this.state = states['Alabama'];
-        // divEl.appendChild(this.setUpStats(this.state));
+        divEl.appendChild(this.setUpStats(this.state));
     }
 
     setUpStats(state) {
@@ -44,8 +44,8 @@ class Stats {
                 divSuffix.innerHTML = suffix[index];
                }
 
-                divSuffix.style = 'font-size: 10px';
-                divSuffix.style = 'height: 100hv';
+                // divSuffix.style = 'font-size: 10px';
+                // divSuffix.style = 'height: 100hv';
 
                 liEl.appendChild(divSuffix);
             }
