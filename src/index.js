@@ -3,7 +3,7 @@ import Census from './scripts/census';
 import Bea from './scripts/bea';
 import Stats from './scripts/stats';
 import State from './scripts/state';
-import LineChart from './scripts/lineChart';
+import setupLineChart from './scripts/lineChart';
 
 document.addEventListener('DOMContentLoaded', async () => {
     const mapDiv = document.getElementById('map');
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     window['chartCategory'] = 'populationHistorical'
     window['usData'] = stats.chartData(data);
 
-    const loadMap = map(mapJson, stats, states, setupLineChart);
+    const loadMap = map(mapJson, stats, states);
     mapDiv.appendChild(loadMap);
 
     const stateData = State.setUpLineChartHistorical(states['Ohio'].populationHist, 'Ohio');
@@ -68,27 +68,4 @@ const setupData = async () => {
     }
 
     return data;
-}
-
-const getParentDimensions = () => {
-    const parent = document.getElementsByClassName('chart_container')[0];
-    const width = parent.offsetWidth;
-    const height = parent.offsetHeight;
-
-    return [width, height];
-}
-
-const setupLineChart = (data) => {
-    const [width, height] = getParentDimensions();
-
-    return LineChart(data, {
-        x: d => d.date,
-        y: d => d.populationHistorical,
-        z: d => d.state,
-        yDomain: [1, 30],
-        yLabel: "↑ Unemployment (%)",
-        width: width,
-        height: height,
-        color: "#29DEF2",
-    });
 }

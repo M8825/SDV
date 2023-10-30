@@ -167,5 +167,27 @@ function LineChart(data, {
   return Object.assign(svg.node(), { value: null });
 }
 
+const getParentDimensions = () => {
+  const parent = document.getElementsByClassName('chart_container')[0];
+  const width = parent.offsetWidth;
+  const height = parent.offsetHeight;
 
-export default LineChart;
+  return [width, height];
+}
+
+const setupLineChart = (data) => {
+  const [width, height] = getParentDimensions();
+
+  return LineChart(data, {
+      x: d => d.date,
+      y: d => d.populationHistorical,
+      z: d => d.state,
+      yDomain: [1, 30],
+      yLabel: "↑ Unemployment (%)",
+      width: width,
+      height: height,
+      color: "#29DEF2",
+  });
+}
+
+export default setupLineChart;
