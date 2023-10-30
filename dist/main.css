@@ -292,7 +292,7 @@ h2 {
 /*!****************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/style/model.scss ***!
   \****************************************************************************************************/
-#modul {
+#modal {
     backdrop-filter: blur(40px);
     z-index: 1;
     height: 100vh;
@@ -301,121 +301,119 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    #box-modal {
+        background-color: #010D00;
+        border: 1px groove #29DEF2;
+        border-radius: 10px;
+        width: 80vw;
+        height: 85vh;
+        position: fixed;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        #box_mode__app_name_title {
+            font-size: 60px;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            color: red;
+            margin-top: 2%;
+            font-family: 'Teko', sans-serif;
+
+        }
+
+        #modal_top {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            width: 100%;
+            height: 77%;
+
+            #modal_imgs {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+                width: 40%;
+
+                #modal_map {
+                    width: 250px;
+                    height: 200px;
+                    border-radius: 10px;
+                    box-shadow: 0 0 10px 0 #29DEF2;
+                }
+
+                #modal_stats_image {
+                    width: 250px;
+                    height: 200px;
+                    border-radius: 10px;
+                    box-shadow: 0 0 10px 0 #29DEF2;
+                    display: flex;
+                    justify-content: center;
+
+                    #modal_stats {
+                        width: 100%;
+                        height: 100%;
+                        margin: 0px 30px;
+                    }
+                }
+
+                #modal_chart_image {
+                    width: 250px;
+                    height: 200px;
+                    border-radius: 10px;
+                    box-shadow: 0 0 10px 0 #29DEF2;
+                    display: flex;
+                    justify-content: center;
+
+                    #modal_chart {
+                        width: 100%;
+                        height: 100%;
+                        margin: 0px 30px;
+                    }
+                }
+            }
+
+            #modal_text {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: start;
+                width: 60%;
+                color: #29DEF2;
+                font-family: 'Roboto', sans-serif;
+                font-size: 20px;
+                padding-right: 6%;
+
+                .first_word {
+                    color: black;
+                    background-color: #29DEF2;
+                    padding: 5px;
+                    font-size: 23px;
+                    border-radius: 2px;
+                }
+            }
+        }
+
+        #modal_button {
+            font-size: 40px;
+            border-radius: 5px;
+            width: 20%;
+            border: 1px groove #29DEF2;
+            background-color: #010D00;
+            color: #29DEF2;
+            display: none;
+        }
+
+        #modal_button:hover {
+            background-color: #29DEF2;
+            color: #010D00;
+        }
+    }
 }
 
-
-#box-modul {
-    background-color: #010D00;
-    border: 1px groove #29DEF2;
-    border-radius: 10px;
-    width: 80vw;
-    height: 85vh;
-    position: fixed;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-}
-
-#box_mode__app_name_title {
-    font-size: 60px;
-    font-weight: 700;
-    font-family: 'Inter', sans-serif;
-    color: red;
-    margin-top: 2%;
-    font-family: 'Teko', sans-serif;
-}
-
-#modul_top {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    width: 100%;
-    height: 77%;
-}
-
-#modul_imgs {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    width: 40%;
-}
-
-#model_map {
-    width: 250px;
-    height: 200px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px 0 #29DEF2;
-}
-
-#model_stats_image {
-    width: 250px;
-    height: 200px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px 0 #29DEF2;
-    display: flex;
-    justify-content: center;
-}
-
-#model_stats {
-    width: 100%;
-    height: 100%;
-    margin: 0px 30px;
-}
-
-#model_chart_image {
-    width: 250px;
-    height: 200px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px 0 #29DEF2;
-    display: flex;
-    justify-content: center;
-}
-
-
-#model_chart {
-    width: 100%;
-    height: 100%;
-    margin: 0px 30px;
-}
-
-#modul_text {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: start;
-    width: 60%;
-    color: #29DEF2;
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-    padding-right: 6%;
-}
-
-.first_word {
-    color: black;
-    background-color: #29DEF2;
-    padding: 5px;
-    font-size: 23px;
-    border-radius: 2px;
-}
-
-
-#modul_button {
-    font-size: 40px;
-    border-radius: 5px;
-    width: 20%;
-    border: 1px groove #29DEF2;
-    background-color: #010D00;
-    color: #29DEF2;
-    display: none;
-}
-
-#modul_button:hover {
-    background-color: #29DEF2;
-    color: #010D00;
-}
 
 /*!******************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/style/loading.scss ***!

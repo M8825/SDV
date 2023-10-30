@@ -33,10 +33,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     const loading = document.getElementsByClassName('loading');
     loading[0].style.display = 'none';
 
-    let modButton = document.getElementById('modul_button')
+    let modButton = document.getElementById('modal_button')
     modButton.style.display = 'block';
     modButton.addEventListener('click', () => {
-        document.getElementById('modul').remove();
+        document.getElementById('modal').remove();
     });
 
     window.addEventListener('resize', () => {
