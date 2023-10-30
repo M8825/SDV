@@ -51,10 +51,8 @@ function map(us, stats, statesObject, setupLineChart) {
       .attr("stroke-linejoin", "round")
       .attr("d", path(topojson.mesh(us, us.objects.states, (a, b) => a !== b)));
 
-  g.append("g")
-  .attr("transform", `translate(${translate}) scale(${scale})`);
-
   svg.call(zoom);
+  svg.call(zoom.transform, d3.zoomIdentity.translate(translate[0], translate[1]).scale(scale));
 
   function reset() {
       states.transition().style("fill", "#404040");
@@ -80,22 +78,10 @@ function map(us, stats, statesObject, setupLineChart) {
       d3.pointer(event, svg.node())
     );
 
-    // stats.update(statesObject[d.properties.name])
-
     let clickedStateName = d.properties.name
     let clickedState = statesObject[clickedStateName]
 
     stats.update(clickedState)
-
-    let stateData = State.setUpLineChartHistorical(statesObject[clickedStateName].populationHist, clickedStateName);
-    let chart = setupLineChart(window['usData'].concat(stateData) )
-
-    let lineChart = document.getElementById('chart');
-    lineChart.innerHTML = '';
-    lineChart.appendChild(chart)
-
-
-    // let lineChart = document.getElementById('chart');
   }
 
 
