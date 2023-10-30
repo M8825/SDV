@@ -1,12 +1,11 @@
 import State from "./state";
 
 function map(us, stats, statesObject, setupLineChart) {
-  var selection = d3.select("#map");
+  var selection = d3.select("#smap");
 
-  selection.style("background-color", "#404040")
 
-  let width = selection._groups[0][0].clientWidth;
-  const height = selection._groups[0][0].clientHeight;
+  let width = selection._groups[0][0].clientWidth - 10;
+  const height = selection._groups[0][0].clientHeight - 10;
 
   const path = d3.geoPath()
 
@@ -16,15 +15,22 @@ function map(us, stats, statesObject, setupLineChart) {
     g.attr("stroke-width", 1 / transform.k);
   }
 
-  const zoom = d3.zoom()
-      .scaleExtent([1, 8])
-      .on("zoom", zoomed);
 
   const svg = d3.create("svg")
-      .attr("viewBox", [-200, -200, width, height])
+      .attr("viewBox", [0, 0, width, height])
       .on("click", reset);
 
+  const bBox = path.bounds(topojson.feature(us, us.objects.states));
+  const scale = 0.95 / Math.max((bBox[1][0] - bBox[0][0]) / width, (bBox[1][1] - bBox[0][1]) / height);
+  const translate = [(width - scale * (bBox[1][0] + bBox[0][0])) / 2, (height - scale * (bBox[1][1] + bBox[0][1])) / 2];
+
+  const zoom = d3.zoom()
+    .scaleExtent([scale, 8])  // Set the minimum scale to the calculated scale
+    .on("zoom", zoomed);
+
   const g = svg.append("g");
+
+  g.attr("transform", `translate(${translate}) scale(${scale})`);
 
   const states = g.append("g")
     .style("fill", "#29DEF2")
@@ -45,16 +51,19 @@ function map(us, stats, statesObject, setupLineChart) {
       .attr("stroke-linejoin", "round")
       .attr("d", path(topojson.mesh(us, us.objects.states, (a, b) => a !== b)));
 
+  g.append("g")
+  .attr("transform", `translate(${translate}) scale(${scale})`);
+
   svg.call(zoom);
 
   function reset() {
-    states.transition().style("fill", "#404040");
-    svg.transition().duration(750).call(
-      zoom.transform,
-      d3.zoomIdentity,
-      d3.zoomTransform(svg.node()).invert([width / 2, height / 2])
-    );
+      states.transition().style("fill", "#404040");
+      svg.transition().duration(750).call(
+        zoom.transform,
+        d3.zoomIdentity.translate(translate[0], translate[1]).scale(scale)
+      );
   }
+
 
   function clicked(event, d) {
     const [[x0, y0], [x1, y1]] = path.bounds(d);

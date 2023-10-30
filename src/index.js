@@ -1,4 +1,4 @@
-// import map from './scripts/map';
+import map from './scripts/map';
 import Census from './scripts/census';
 import Bea from './scripts/bea';
 import Stats from './scripts/stats';
@@ -6,13 +6,13 @@ import State from './scripts/state';
 import LineChart from '../dist/lineChart';
 
 document.addEventListener('DOMContentLoaded', async () => {
-    // const mapDiv = document.getElementById('map');
+    const mapDiv = document.getElementById('smap');
     const statsEl = document.getElementById('stats');
-    // mapDiv.style.width = '100%';
+    mapDiv.style.width = '100%';
 
     // Load map
     const res = await fetch(`https://cdn.jsdelivr.net/npm/us-atlas@3/states-albers-10m.json`)
-    // const mapJson = await res.json()
+    const mapJson = await res.json()
 
     // Fetch and setup data
     const data = await setupData()
@@ -22,10 +22,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     window['chartCategory'] = 'populationHistorical'
     window['usData'] = stats.chartData(data);
 
-
-    // const loadMap = map(mapJson, stats, states, setupLineChart);
-    // mapDiv.appendChild(loadMap);
-
+    const loadMap = map(mapJson, stats, states, setupLineChart);
+    mapDiv.appendChild(loadMap);
 
     const stateData = State.setUpLineChartHistorical(states['Ohio'].populationHist, 'Ohio');
     const chart = setupLineChart(window['usData'].concat(stateData));

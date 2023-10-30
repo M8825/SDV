@@ -1,17 +1,17 @@
 #smap {
-    background-color: blue;
-    width: 70vw;
-    height: 30vh;
+    width: 50vw;
+    height: 100vh;
 }
 
 #chart_stats_container {
     color: #D9D9D9;
     display: grid;
-    grid-template-rows: 3fr 3fr 0.5fr; /* Fixed row definitions */
-    width: 30vw;
+    grid-template-rows: 3fr 3fr 1fr; /* Fixed row definitions */
+    width: 50vw;
     height: 100vh;
-    max-height: 100vh;
+    max-height: 100vh !important;
     box-sizing: border-box;
+
 
     .chart_container {
         width: 100%;
@@ -21,7 +21,7 @@
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
-        align-items: flex-end;
+        align-items: center;
         width: 100%;
         max-width: 100%;
         padding-left: 5px;
@@ -37,9 +37,9 @@
 
             .logo_network {
                 align-self: center;
-                width: 50px;
-                height: 50px;
-                margin: 1em;
+                width: 5vw;
+                height: 5vw;
+                margin: 0em 1em;
 
                 .logo_image {
                     width: 100%;
