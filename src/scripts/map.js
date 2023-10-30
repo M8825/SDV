@@ -1,7 +1,7 @@
 import State from "./state";
 
-function map(us, stats, statesObject, setupLineChart) {
-  var selection = d3.select("#smap");
+function map(us, stats, statesObject) {
+  var selection = d3.select("#map");
 
 
   let width = selection._groups[0][0].clientWidth - 10;

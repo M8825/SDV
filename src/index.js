@@ -3,10 +3,10 @@ import Census from './scripts/census';
 import Bea from './scripts/bea';
 import Stats from './scripts/stats';
 import State from './scripts/state';
-import LineChart from '../dist/lineChart';
+import LineChart from './scripts/lineChart';
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const mapDiv = document.getElementById('smap');
+    const mapDiv = document.getElementById('map');
     const statsEl = document.getElementById('stats');
     mapDiv.style.width = '100%';
 
