@@ -432,12 +432,16 @@ h2 {
             background-color: #010D00;
             color: #29DEF2;
             display: none;
+            margin: 65px;
+
+            &:hover {
+                background-color: #29DEF2;
+                color: #010D00;
+            }
         }
 
-        #modal_button:hover {
-            background-color: #29DEF2;
-            color: #010D00;
-        }
+
+
     }
 }
 
@@ -453,6 +457,43 @@ h2 {
     }
 }
 
+@media only screen and (max-width: 1300px) {
+    #modal {
+        #box-modal{
+            #modal_button {
+                font-size: 35px;
+                margin: 60px;
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 1300px) {
+    #modal {
+        #box-modal{
+            #modal_button {
+                font-size: 25px;
+                margin: 50px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    #modal {
+        #box-modal{
+            #modal_content {
+                #modal_text {
+                    #modal_inner_text p {
+                            display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
 /*!******************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/style/loading.scss ***!
   \******************************************************************************************************/
@@ -462,11 +503,15 @@ h2 {
     position: relative;
     width: 80px;
     height: 80px;
+    margin: 50px;
+    box-sizing: border-box;
   }
+
   .loading div {
     transform-origin: 40px 40px;
     animation: loading 1.2s linear infinite;
   }
+
   .loading div:after {
     content: " ";
     display: block;
@@ -478,6 +523,26 @@ h2 {
     border-radius: 90%;
     background: #29DEF2;
   }
+
+@media only screen and (max-width: 1400px) {
+  .loading {
+    width: 40;
+    height: 30;
+
+  }
+
+  .loading div {
+        transform-origin: 40px 30px;
+
+        &:after{
+          width: 3px;
+          height: 15px;
+
+        }
+      }
+
+}
+
   .loading div:nth-child(1) {
     transform: rotate(0deg);
     animation-delay: -1.1s;

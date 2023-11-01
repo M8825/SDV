@@ -138,12 +138,16 @@
             background-color: #010D00;
             color: #29DEF2;
             display: none;
+            margin: 65px;
+
+            &:hover {
+                background-color: #29DEF2;
+                color: #010D00;
+            }
         }
 
-        #modal_button:hover {
-            background-color: #29DEF2;
-            color: #010D00;
-        }
+
+
     }
 }
 
@@ -153,6 +157,43 @@
             #modal_content {
                 #modal_text {
                     font-size: 0.8rem;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    #modal {
+        #box-modal{
+            #modal_button {
+                font-size: 35px;
+                margin: 60px;
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 1300px) {
+    #modal {
+        #box-modal{
+            #modal_button {
+                font-size: 25px;
+                margin: 50px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    #modal {
+        #box-modal{
+            #modal_content {
+                #modal_text {
+                    #modal_inner_text p {
+                            display: none;
+                    }
                 }
             }
         }
