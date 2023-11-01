@@ -23,6 +23,7 @@
       rel="stylesheet"
     />
     <link rel="icon" type="image/x-icon" href="./src/imgs/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 
   <body>
@@ -30,38 +31,44 @@
       <div id="modal">
         <div id="box-modal">
           <h1 id="box_mode__app_name_title">Stately</h1>
-          <div id="modal_top">
+          <div id="modal_content">
             <div id="modal_imgs">
-              <img id="modal_map" src="./src/imgs/map.png" alt="" srcset="" />
+
+              <div id="modal_map_image">
+                <img src="./src/imgs/map.png" class="foobarr"  alt="model_map" />
+              </div>
+
               <div id="modal_stats_image">
-                <img id="modal_stats" src="./src/imgs/stats.png" alt="" />
+                <img src="./src/imgs/foo.png" class="foobarr" alt="modal_stats" />
               </div>
 
               <div id="modal_chart_image">
-                <img id="modal_chart" src="./src/imgs/chart.png" alt="" />
+                <img src="./src/imgs/chart.png" class="foobarr" alt="modal_chart" />
               </div>
+
             </div>
+
             <div id="modal_text">
-              <div id="map_text">
+              <div id="modal_inner_text">
                 <span class="first_word">Map</span>
-                <br />
-                <br />
-                Click on a state to see the relevant economic data. Zoom in/out with the mouse wheel.
+                <p>
+                  Click on a state to see the relevant economic data. Zoom in/out with the mouse wheel.
+                </p>
               </div>
 
-              <div id="stats_text">
+              <div id="modal_inner_text">
                 <span class="first_word">Statistics</span>
-                <br />
-                <br />
-                View statistics for selected state.
+                <p>
+                  View statistics for selected state.
+                </p>
               </div>
 
-              <div id="chart_text">
+              <div id="modal_inner_text">
                 <span class="first_word">Historical chart</span>
-                <br />
-                <br />
-                Compares the evolution of the selected
-                state with the historical US data.
+                <p>
+                  Compares the evolution of the selected
+                  state with the historical US data.
+                </p>
               </div>
             </div>
           </div>
