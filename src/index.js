@@ -4,6 +4,7 @@ import Bea from './scripts/bea';
 import Stats from './scripts/stats';
 import State from './scripts/state';
 import setupLineChart from './scripts/lineChart';
+import barChart from './scripts/barChart';
 
 document.addEventListener('DOMContentLoaded', async () => {
     const mapDiv = document.getElementById('map');
@@ -26,7 +27,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     mapDiv.appendChild(loadMap);
 
     const stateData = State.setUpLineChartHistorical(states['Ohio'].populationHist, 'Ohio');
-    const chart = setupLineChart(window['usData'].concat(stateData));
+    // const chart = setupLineChart(window['usData'].concat(stateData));
+    const chart = barChart(stateData);
     const lineChart = document.getElementById('chart');
     lineChart.appendChild(chart)
 
