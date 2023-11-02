@@ -81,16 +81,18 @@ function map(us, stats, statesObject) {
 
     let clickedStateName = d.properties.name
     let clickedState = statesObject[clickedStateName]
-    // const foo = stats.chartData(clickedState)
+
+    // Update statistics box with clicked state data
+    stats.update(clickedState)
 
     // Setup and update bar chart with clicked state and historical population data
-    const foo = State.setUpLineChartHistorical(clickedState.populationHist);
-    const chart = barChart(foo);
+    const historicalPopulationObj = State.setUpLineChartHistorical(clickedState.populationHist);
+    const chart = barChart(historicalPopulationObj);
+
+    // Grab HTML element and update with new chart instance.
     const barChartEle = document.getElementById('chart');
     barChartEle.removeChild(barChartEle.firstChild);
     barChartEle.appendChild(chart)
-
-    stats.update(clickedState)
   }
 
 
