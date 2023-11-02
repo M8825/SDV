@@ -10,14 +10,15 @@ function barChart(data) {
 
   // Declare the x (horizontal position) scale.
   const x = d3.scaleBand()
-      .domain(d3.groupSort(data, ([d]) => -d.populationHistorical, (d) => d.date.getFullYear()))
+      .domain(data.map(d => d.date.getFullYear()).sort((a, b) => a - b))
       .range([marginLeft, width - marginRight])
-      .padding(0.1);
+      .padding(0.5);
 
   // Declare the y (vertical position) scale.
+  const yAxisMin = parseInt(data[0].populationHistorical) - 2;
   const y = d3.scaleLinear()
-      .domain([0, d3.max(data, (d) => d.populationHistorical)])
-      .range([height - marginBottom, marginTop]);
+      .domain([yAxisMin, d3.max(data, (d) => d.populationHistorical + d.populationHistorical * 0.1)])
+      .range([height - marginBottom, marginTop])
 
   // Create the SVG container.
   const svg = d3.create("svg")
@@ -28,13 +29,13 @@ function barChart(data) {
 
   // Add a rect for each bar.
   svg.append("g")
-      .attr("fill", "steelblue")
-    .selectAll()
-    .data(data)
-    .join("rect")
+      .attr("fill", "#29DEF2")
+      .selectAll()
+      .data(data)
+      .join("rect")
       .attr("x", (d) => x(d.date.getFullYear()))
       .attr("y", (d) => y(d.populationHistorical))
-      .attr("height", (d) => y(0) - y(d.populationHistorical))
+      .attr("height", (d) => y(yAxisMin) - y(d.populationHistorical))
       .attr("width", x.bandwidth());
 
   // Add the x-axis and label.
@@ -52,7 +53,8 @@ function barChart(data) {
           .attr("y", 10)
           .attr("fill", "currentColor")
           .attr("text-anchor", "start")
-          .text("↑ Frequency (%)"));
+          .style("font-size", "12px") // Adjust font size as needed
+          .text("Population in Millions"));
 
   // Return the SVG element.
   return svg.node();

@@ -43,7 +43,6 @@ class State {
 
 
         static setUpLineChartHistorical = (dataArrayFiveYears, name='US') => {
-
                 let dates = ['2021-04-02', '2020-04-02', '2019-04-02', '2018-04-02', '2017-04-02']
                 let historicalData = [];
 

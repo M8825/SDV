@@ -43,10 +43,6 @@ class Stats {
                } else {
                 divSuffix.innerHTML = suffix[index];
                }
-
-                // divSuffix.style = 'font-size: 10px';
-                // divSuffix.style = 'height: 100hv';
-
                 liEl.appendChild(divSuffix);
             }
 
@@ -65,7 +61,6 @@ class Stats {
 
     update(state) {
         let lis = document.querySelectorAll('#stats ul li');
-        // Object.keys(state).forEach((key, i) => {
 
         for (let i = 0; i < lis.length; i++) {
             let innerElements = lis[i].querySelectorAll('div');
@@ -109,7 +104,7 @@ class Stats {
             })
 
             window['usTotal'].push(count);
-            totalHistValuesAllYears.push(Math.round(count / 52));
+            totalHistValuesAllYears.push(Math.round(count / 50));
         }
 
         return State.setUpLineChartHistorical(totalHistValuesAllYears);

@@ -3,7 +3,6 @@ import Census from './scripts/census';
 import Bea from './scripts/bea';
 import Stats from './scripts/stats';
 import State from './scripts/state';
-import setupLineChart from './scripts/lineChart';
 import barChart from './scripts/barChart';
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -26,11 +25,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     const loadMap = map(mapJson, stats, states);
     mapDiv.appendChild(loadMap);
 
-    const stateData = State.setUpLineChartHistorical(states['Ohio'].populationHist, 'Ohio');
-    // const chart = setupLineChart(window['usData'].concat(stateData));
-    const chart = barChart(stateData);
-    const lineChart = document.getElementById('chart');
-    lineChart.appendChild(chart)
+    const chart = barChart(window['usData']);
+    const barChartEle = document.getElementById('chart');
+    barChartEle.appendChild(chart)
 
     const loading = document.getElementsByClassName('loading');
     loading[0].style.display = 'none';
@@ -45,7 +42,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const lineChart = document.getElementById('chart');
         lineChart.removeChild(lineChart.firstChild);
 
-        const chart = setupLineChart(window['usData'].concat(stateData));
+        const chart = barChart(window['usData']);
 
         lineChart.appendChild(chart);
     });

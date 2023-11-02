@@ -1,4 +1,5 @@
 import State from "./state";
+import barChart from "./barChart";
 
 function map(us, stats, statesObject) {
   var selection = d3.select("#map");
@@ -80,6 +81,14 @@ function map(us, stats, statesObject) {
 
     let clickedStateName = d.properties.name
     let clickedState = statesObject[clickedStateName]
+    // const foo = stats.chartData(clickedState)
+
+    // Setup and update bar chart with clicked state and historical population data
+    const foo = State.setUpLineChartHistorical(clickedState.populationHist);
+    const chart = barChart(foo);
+    const barChartEle = document.getElementById('chart');
+    barChartEle.removeChild(barChartEle.firstChild);
+    barChartEle.appendChild(chart)
 
     stats.update(clickedState)
   }
