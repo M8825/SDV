@@ -46,7 +46,7 @@ function barChart(data) {
   // Add the y-axis and label, and remove the domain line.
   svg.append("g")
       .attr("transform", `translate(${marginLeft},0)`)
-      .call(d3.axisLeft(y).tickFormat((y) => (y * 100).toFixed()))
+      .call(d3.axisLeft(y).tickFormat((y) => (parseFloat(y).toFixed(2))))
       .call(g => g.select(".domain").remove())
       .call(g => g.append("text")
           .attr("x", -marginLeft)
