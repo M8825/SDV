@@ -1,5 +1,4 @@
 function barChart(data) {
-  debugger
   // Declare the chart dimensions and margins.
   const width = 928;
   const height = 500;
@@ -27,16 +26,21 @@ function barChart(data) {
       .attr("viewBox", [0, 0, width, height])
       .attr("style", "max-width: 100%; height: auto;");
 
-  // Add a rect for each bar.
+  // Add a rect for each bar with a transition.
   svg.append("g")
-      .attr("fill", "#29DEF2")
-      .selectAll()
-      .data(data)
-      .join("rect")
-      .attr("x", (d) => x(d.date.getFullYear()))
-      .attr("y", (d) => y(d.populationHistorical))
-      .attr("height", (d) => y(yAxisMin) - y(d.populationHistorical))
-      .attr("width", x.bandwidth());
+    .attr("fill", "#29DEF2")
+    .selectAll("rect")
+    .data(data)
+    .join("rect")
+    .attr("x", (d) => x(d.date.getFullYear()))
+    .attr("width", x.bandwidth())
+    .attr("y", height - marginBottom) // Start at the bottom of the chart
+    .attr("height", 0) // Start with a height of 0
+    .transition() // Initialize transition
+    .delay((d, i) => i * 50)
+    .duration(2350) // Set the duration of the transition
+    .attr("y", (d) => y(d.populationHistorical)) // End at the proper y position
+    .attr("height", (d) => height - marginBottom - y(d.populationHistorical)); // Grow to the proper height
 
   // Add the x-axis and label.
   svg.append("g")
@@ -53,7 +57,6 @@ function barChart(data) {
           .attr("y", 10)
           .attr("fill", "currentColor")
           .attr("text-anchor", "start")
-          .style("font-size", "12px") // Adjust font size as needed
           .text("Population in Millions"));
 
   // Return the SVG element.
