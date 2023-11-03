@@ -14,7 +14,9 @@ function barChart(data) {
       .padding(0.5);
 
   // Declare the y (vertical position) scale.
-  const yAxisMin = parseInt(data[0].populationHistorical) - 2;
+  const population = parseInt(data[0].populationHistorical);
+  const yAxisMin =  population - 2 > 0 ? population - 2 : population;
+
   const y = d3.scaleLinear()
       .domain([yAxisMin, d3.max(data, (d) => d.populationHistorical + d.populationHistorical * 0.1)])
       .range([height - marginBottom, marginTop])
