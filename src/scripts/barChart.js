@@ -59,7 +59,7 @@ function barChart(data) {
       .call(g => g.selectAll(".tick text") // Select all text elements for ticks
       .style("font-size", "16px")) // Change font size as desired
       .call(g => g.append("text")
-          .attr("x", -marginLeft + 20)
+          .attr("x", width - 200)  // Adjust this value to move the text to the right
           .attr("y", 30)
           .attr("fill", "currentColor")
           .attr("text-anchor", "start")
