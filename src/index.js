@@ -8,7 +8,6 @@ import barChart from './scripts/barChart';
 document.addEventListener('DOMContentLoaded', async () => {
     const mapDiv = document.getElementById('map');
     const statsEl = document.getElementById('stats');
-    mapDiv.style.width = '100%';
 
     // Load map
     const res = await fetch(`https://cdn.jsdelivr.net/npm/us-atlas@3/states-albers-10m.json`)

@@ -1,7 +1,7 @@
 function barChart(data) {
   // Declare the chart dimensions and margins.
   const width = 928;
-  const height = 500;
+  const height = 450;
   const marginTop = 30;
   const marginRight = 0;
   const marginBottom = 30;
@@ -26,7 +26,7 @@ function barChart(data) {
       .attr("width", width)
       .attr("height", height)
       .attr("viewBox", [0, 0, width, height])
-      .attr("style", "max-width: 100%; height: auto;");
+      .attr("style", "max-width: 100%; height: 100%;");
 
   // Add a rect for each bar with a transition.
   svg.append("g")

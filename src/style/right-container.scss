@@ -1,13 +1,20 @@
 #map {
-    width: 50vw;
+    width: 65vw;
     height: 100vh;
+}
+
+@media only screen and (max-width: 390px) {
+    #map {
+        width: 100vw;
+        height: 40vh;
+    }
 }
 
 #chart_stats_container {
     color: #D9D9D9;
     display: grid;
     grid-template-rows: 3fr 3fr 1fr; /* Fixed row definitions */
-    width: 50vw;
+    width: 35vw;
     height: 100vh;
     max-height: 100vh !important;
     box-sizing: border-box;
@@ -47,6 +54,13 @@
                 }
             }
         }
+    }
+}
+
+@media only screen and (max-width: 390px) {
+    #chart_stats_container {
+        width: 100vw;
+        height: 60vh;
     }
 }
 
