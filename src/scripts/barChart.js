@@ -5,7 +5,7 @@ function barChart(data) {
   const marginTop = 30;
   const marginRight = 0;
   const marginBottom = 30;
-  const marginLeft = 40;
+  const marginLeft = 75;
 
   // Declare the x (horizontal position) scale.
   const x = d3.scaleBand()
@@ -45,16 +45,20 @@ function barChart(data) {
   // Add the x-axis and label.
   svg.append("g")
       .attr("transform", `translate(0,${height - marginBottom})`)
-      .call(d3.axisBottom(x).tickSizeOuter(0));
+      .call(d3.axisBottom(x).tickSizeOuter(0))
+      .call(g => g.selectAll(".tick text") // Select all text elements for ticks
+      .style("font-size", "18px")); // Change font size as desired
 
   // Add the y-axis and label, and remove the domain line.
   svg.append("g")
       .attr("transform", `translate(${marginLeft},0)`)
       .call(d3.axisLeft(y).tickFormat((y) => (parseFloat(y).toFixed(2))))
       .call(g => g.select(".domain").remove())
+      .call(g => g.selectAll(".tick text") // Select all text elements for ticks
+      .style("font-size", "16px")) // Change font size as desired
       .call(g => g.append("text")
-          .attr("x", -marginLeft)
-          .attr("y", 10)
+          .attr("x", -marginLeft + 20)
+          .attr("y", 30)
           .attr("fill", "currentColor")
           .attr("text-anchor", "start")
           .text("Population in Millions"));
