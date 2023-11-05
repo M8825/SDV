@@ -30,8 +30,17 @@ In **SDV**, users will be able to:
 The Modal is a customizable and accessible overlay component designed to display concise instructions and highlight the core functionalities of your website. It serves as an immediate point of reference for users to understand and navigate your site with ease.
 !["Modal"](./src/imgs/modal_anim.gif)
 
-
 &emsp;
+## Map
+Users can click on any state on the map, and relevant economic/demographic data will be displayed for the selected US state. **Stately** fetches publicly available data from the following sources:
+
+- [U.S. Bureau of Economic Analysis (BEA)](https://www.bea.gov/)
+- [United States Census Bureau](https://www.census.gov/data/developers/data-sets.html)
+
+!["Map"](./src/imgs/click_on_map.gif)
+&emsp;
+
+
 ## Implementation Timeline:
 * **Friday Afternoon & Weekend:**
  Setup project, including getting webpack up and running. Create map, state, classes and ensure that my data is being fetched properly. Get zoom in and zoom out functionality.
