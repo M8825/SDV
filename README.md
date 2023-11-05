@@ -24,6 +24,13 @@ In **SDV**, users will be able to:
 ## Technologies & Libraries
 * HTML, CSS, JavaScript, D3, Webpack
 
+
+&emsp;
+## Modal/Info window
+The Modal is a customizable and accessible overlay component designed to display concise instructions and highlight the core functionalities of your website. It serves as an immediate point of reference for users to understand and navigate your site with ease.
+!["Modal"](./src/imgs/modal_anim.gif)
+
+
 &emsp;
 ## Implementation Timeline:
 * **Friday Afternoon & Weekend:**
