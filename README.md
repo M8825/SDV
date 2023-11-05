@@ -13,12 +13,10 @@ State Data Visualization is a data visualization of the United States. For each 
 &emsp;
 ## Functionality and MVPs
 In **SDV**, users will be able to:
-1. Click on the map to select state.
+1. Click on the map to select the state.
 2. Zoom in/out a map.
-3. Detailed view of statistics for selected state.
-4. Historical index chart for specific statistics (For example: GDP per capita historical data).
-5. Go through list of menu items (state names) with arrow keys - Up, Down.
-
+3. Detailed view of statistics for the selected state.
+4. Historical bar chart for specific statistics (For example: GDP per capita historical data).
 
 &emsp;
 ## Technologies & Libraries
