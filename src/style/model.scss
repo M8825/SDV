@@ -1,3 +1,15 @@
+#modal_display {
+    position: absolute; /* Change this to absolute for positioning inside #map */
+    right: 30px;
+    top: 10px;
+    color: gray;
+    display: flex;
+    align-items: flex-end;
+    gap: 0.2rem;
+    font-size: 0.7rem;
+
+}
+
 #modal {
     backdrop-filter: blur(40px);
     z-index: 1;
