@@ -15,6 +15,11 @@ body {
     }
 }
 
+.state-name {
+    opacity: 0; /* start with 0 opacity (fully transparent) */
+    transition: opacity 3.5s; /* this will give a 0.5-second transition effect for the opacity */
+}
+
 h2 {
     font-size: 2vw;
     font-weight: 700;

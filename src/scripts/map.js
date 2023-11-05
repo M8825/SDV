@@ -2,8 +2,7 @@ import State from "./state";
 import barChart from "./barChart";
 
 function map(us, stats, statesObject) {
-  var selection = d3.select("#map");
-
+  const selection = d3.select("#map");
 
   let width = selection._groups[0][0].clientWidth - 10;
   const height = selection._groups[0][0].clientHeight - 10;
@@ -56,6 +55,8 @@ function map(us, stats, statesObject) {
   svg.call(zoom.transform, d3.zoomIdentity.translate(translate[0], translate[1]).scale(scale));
 
   function reset() {
+    // 1. Clear any previous state names
+      g.selectAll(".state-name").remove();
       states.transition().style("fill", "#404040");
       svg.transition().duration(750).call(
         zoom.transform,
@@ -78,6 +79,157 @@ function map(us, stats, statesObject) {
 
       d3.pointer(event, svg.node())
     );
+
+    // 1. Clear any previous state names
+    g.selectAll(".state-name").remove();
+
+    // 2. Calculate the position using bounding box
+    let xPos = (x0 + x1) / 2;
+    let yPos = (y0 + y1) / 2;
+
+    const bboxWidth = x1 - x0;
+    const bboxHeight = y1 - y0;
+    let fontSize = Math.min(bboxWidth / 6, bboxHeight / 2, 10); // Adjust the divisors as needed
+
+    const textWidth = this.getBBox().width;
+    if(textWidth > bboxWidth) {
+        yPos -= 10; // Adjust as needed
+    }
+
+    switch (d.properties.name) {
+      case 'Tennessee':
+        xPos -= 10;
+        yPos += 15;
+        break;
+      case 'New Hampshire':
+        fontSize = 5;
+        yPos += 5;
+        break;
+      case 'New Jersey':
+        fontSize = 7;
+        xPos += 1;
+        yPos -= 5;
+        break;
+      case 'New York':
+        yPos += 10;
+        break;
+      case 'Kentucky':
+        xPos += 20;
+        yPos += 5;
+        break;
+      case 'Connecticut':
+        yPos += 10;
+        break;
+      case 'Massachusetts':
+        fontSize = 6;
+        xPos -= 7;
+        yPos += 11;
+        break;
+      case 'Mississippi':
+        fontSize = 8;
+        xPos += 3;
+        break;
+      case 'Florida':
+        fontSize = 9;
+        xPos += 37;
+        break;
+      case 'Georgia':
+        yPos += 15;
+        break;
+      case 'Louisiana':
+        yPos += 25;
+        break;
+      case 'Idaho':
+        yPos += 35;
+        break;
+      case 'Virginia':
+        xPos += 15;
+        yPos += 25;
+        break;
+      case 'North Carolina':
+        xPos += 10;
+        yPos += 10;
+        break;
+      case 'South Carolina':
+        xPos += 10;
+        break;
+      case 'Michigan':
+        yPos += 20;
+        xPos += 25;
+        break;
+      case 'Wisconsin':
+        yPos += 10;
+        break;
+      case 'Minnesota':
+        xPos -= 15;
+        break;
+      case 'Oklahoma':
+        xPos += 25;
+        yPos += 10;
+        break;
+      case 'Washington':
+        xPos += 10;
+        yPos += 15;
+        break;
+      case 'Oregon':
+        xPos += 5;
+        yPos += 15;
+        break;
+      case 'California':
+        xPos -= 13;
+        yPos += 15;
+        break;
+      case 'Alaska':
+        xPos += 35;
+        break;
+      case 'West Virginia':
+        yPos += 8;
+        break;
+      case 'Texas':
+        fontSize = 38;
+        xPos += 20;
+        break;
+    }
+    const stateNameText = g.append("text")
+        .attr("class", "state-name")
+        .attr("x", xPos)
+        .attr("y", yPos)
+        .attr("text-anchor", "middle")
+        .attr("font-size", `${fontSize}px`) // increased font size
+        .attr("fill", "black")
+        .text(d.properties.name);
+
+    const name = g.selectAll(".state-name");
+
+    if (name.text() === "New Hampshire") {
+      name.attr("transform", `rotate(65, ${xPos}, ${yPos})`);
+    } else if (name.text() === "West Virginia") {
+      name.attr("transform", `rotate(-40, ${xPos}, ${yPos})`);
+    } else if (name.text() === "New Jersey") {
+      name.attr("transform", `rotate(70, ${xPos}, ${yPos})`);
+    } else if (name.text() === "Texas") {
+      name.attr("font-weight", "bold")
+    } else if (name.text() === "New Mexico") {
+      name.attr("transform", `rotate(55, ${xPos}, ${yPos})`);
+      name.attr("font-size", "22px")
+      name.attr("font-weight", "bold")
+    } else if (name.text() === "Arizona") {
+      name.attr("transform", `rotate(-40, ${xPos}, ${yPos})`);
+      name.attr("font-size", "28px")
+      name.attr("font-weight", "bold")
+    } else if (name.text() === "Florida") {
+      name.attr("transform", `rotate(55, ${xPos}, ${yPos})`);
+      name.attr("font-size", "28px")
+      name.attr("font-weight", "bold")
+    } else if (name.text() === "California") {
+      name.attr("transform", `rotate(55, ${xPos}, ${yPos})`);
+      name.attr("font-size", "38px")
+      name.attr("font-weight", "bold")
+    }
+
+    setTimeout(() => {
+      stateNameText.style("opacity", 1);
+    }, 10);
 
     let clickedStateName = d.properties.name
     let clickedState = statesObject[clickedStateName]
