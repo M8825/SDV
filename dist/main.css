@@ -323,7 +323,7 @@ h2 {
 /*!****************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/style/model.scss ***!
   \****************************************************************************************************/
-#modal_display {
+#info_button {
     position: absolute; /* Change this to absolute for positioning inside #map */
     right: 30px;
     top: 10px;
@@ -331,8 +331,8 @@ h2 {
     display: flex;
     align-items: flex-end;
     gap: 0.2rem;
-    font-size: 0.7rem;
-
+    font-size: 0.5rem;
+    cursor: pointer;
 }
 
 #modal {

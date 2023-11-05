@@ -34,7 +34,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     let modButton = document.getElementById('modal_button')
     modButton.style.display = 'block';
     modButton.addEventListener('click', () => {
-        document.getElementById('modal').remove();
+        const modal = document.getElementById('modal');
+        modal.style.display = 'none';
     });
 
     window.addEventListener('resize', () => {
@@ -45,6 +46,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         lineChart.appendChild(chart);
     });
+
+    const infoButton = document.getElementById('info_button');
+
+    infoButton.addEventListener('click', () => {
+        const modal = document.getElementById('modal');
+        modal.style.display = 'flex';
+    });
+
 });
 
 const setupData = async () => {
