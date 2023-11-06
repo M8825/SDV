@@ -16,7 +16,7 @@ In **SDV**, users will be able to:
 1. Click on the map to select the state.
 2. Zoom in/out a map.
 3. Detailed view of statistics for the selected state.
-4. Historical bar chart for specific statistics (For example: GDP per capita historical data).
+4. Historical bar chart for specific statistics (For example: Historical US Population).
 
 &emsp;
 ## Technologies & Libraries
