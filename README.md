@@ -25,7 +25,7 @@ In **SDV**, users will be able to:
 
 &emsp;
 ## Modal/Info window
-The Modal is a customizable and accessible overlay component designed to display concise instructions and highlight the core functionalities of your website. It serves as an immediate point of reference for users to understand functionality and navigate in app.
+The Modal is a customizable and accessible overlay component designed to display concise instructions and highlight the core functionalities of your website. It serves as an immediate point of reference for users to understand the functionality and navigate in the app.
 !["Modal"](./src/imgs/modal_anim.gif)
 
 &emsp;
