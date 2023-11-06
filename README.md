@@ -40,14 +40,21 @@ Users can click on any state on the map, and relevant economic/demographic data 
 
 
 ## Implementation Timeline:
-* **Friday Afternoon & Weekend:**
- Setup project, including getting webpack up and running. Create map, state, classes and ensure that my data is being fetched properly. Get zoom in and zoom out functionality.
 
+- **Friday Afternoon & Weekend:**
+  - Setup project, including getting webpack up and running. 
+  - Create map, state, classes, and ensure that my data is being fetched properly. 
+  - Get zoom in and zoom out functionality.
 
-* **Monday:** Build UI skeleton and create theme based on bauhaus principles.
+- **Monday:**
+  - Build a UI skeleton and create a theme.
 
-* **Tuesday:** Implement index chart with historical index chart for each category (unemployment, GDP per capita etc.)
+- **Tuesday:**
+  - Implement bar chart and map (unemployment, GDP per capita, etc.)
 
-* **Wednesday:** TBD...
+- **Wednesday:**
+  - Create a statistics table.
 
-* **Thursday:** Deploy to GitHub pages.
+- **Thursday:**
+  - Polish design and deploy to GitHub pages.
+
