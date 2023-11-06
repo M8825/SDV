@@ -1,7 +1,7 @@
 # State Data Visualization
 &emsp;
 
-State Data Visualization is a data visualization of the United States. For each state, it shows GDP, Population, Area in sq mi, Unemployment rate, etc. SDV presents the user with a map of the United States. After clicking on a specific state, it fetches the state's unique data from various sources. After fetching data, it dynamically renders data, highlights, and zooms into the state on the map. SDV will follow the Bauhaus style in graphic design, featuring sharp corners, edges, and strong lines.
+State Data Visualization (SDV) is a tool for visualizing economic and demographic statistics of the United States. For each state, it displays GDP, population, area (in sq mi), unemployment rate, and more. SDV presents the user with a map of the United States. Upon selecting a specific state, the tool fetches that state's unique data from various sources. After fetching the data, it dynamically renders the information, highlighting and zooming into the chosen state on the map
 
 
 &emsp;
