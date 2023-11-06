@@ -20,7 +20,7 @@ In **SDV**, users will be able to:
 
 &emsp;
 ## Technologies & Libraries
-* HTML, CSS, JavaScript, D3, Webpack
+* HTML, CSS, Vanilla Javascript, D3, Webpack
 
 
 &emsp;
